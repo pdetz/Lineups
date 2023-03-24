@@ -1,10 +1,11 @@
 div.palette{
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+    max-width: 20rem;
     border-radius: 0.3em;
     padding: 0.5em;
     margin: 0.4em 0;
-    line-height: 1rem;
 }
 
 div.palette>.palette{
@@ -23,5 +24,5 @@ button.palette {
 }
 
 button.palette.sel{
-    border: 2px solid "#fff";
+    border: 2px solid #fff;
 }

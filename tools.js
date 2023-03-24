@@ -9,7 +9,7 @@ function loadTools(){
             div(".center", dynamicInput($("#meetTitle"), ".title"))
         ),
         new DynamicPallete("header", "th", COLORS, 5, "Choose your table header color:"),
-        new DynamicPallete("row", "tr:odd", COLORS, 12, "Choose your row color:"),
+        new DynamicPallete("row", "tr:nth-child(odd)", COLORS, 13, "Choose your row color:"),
         div(".tool", 
             toolButton(PRINT + " Print Lineups", "#printButton", window.print)
         )
