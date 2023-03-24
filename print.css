@@ -1,0 +1,42 @@
+@media print {
+
+    .column {
+        width: 100%;
+        padding: 0;
+        height: auto;
+        float:none;
+    }
+
+    .frame {
+        display: block;
+        padding: 0;
+        margin: 0;
+        background: transparent;
+        color: #000;
+        width: 100%;
+    }
+
+    
+    div.lineup {
+        width:100%;
+        page-break-inside: avoid;
+        margin-bottom: 1em;
+    }
+
+
+    :root {
+        background:none;
+    }
+
+    #toolContainer {
+        display: none;
+    }
+
+    .column::-webkit-scrollbar {
+        display: none;
+    }
+    
+    .column::-webkit-scrollbar-thumb {
+        display: none;
+    }
+}

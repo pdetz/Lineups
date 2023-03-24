@@ -1,0 +1,25 @@
+div.palette{
+    border-radius: 0.3em;
+    padding: 0.5em;
+    margin: 0.4em 0;
+    line-height: 1rem;
+}
+
+div.palette>.palette{
+    margin-bottom: 0;
+}
+
+button.palette {
+    border:2px solid black;
+    height: calc(2rem - 2px);
+    width: calc(2rem - 2px);
+    border-radius: .3rem;
+    margin: 2px;
+    padding: 0;
+    font-size: 8pt;
+    color: #000;
+}
+
+button.palette.sel{
+    border: 2px solid "#fff";
+}

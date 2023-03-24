@@ -1,0 +1,96 @@
+#toolContainer {
+    display:flex;
+    flex-direction: column;
+    max-width: 400px;
+    padding-top: 1em;
+}
+
+#tools {
+    padding: 0.5em;
+    border: none;
+    border-radius: 0.3em;
+}
+
+div.tool {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0.5em;
+    margin: 1em 0.5em;
+    border: 1px solid #223;
+    border-radius: 0.3em;
+    text-align: center;
+}
+
+input.dynamic{
+    background-color: #000;
+    color: #fff;
+    border: 1px solid #aaa;
+    border-radius: 0.3em;
+    margin: 2px 2px 4px 2px;
+    padding: 6px;
+}
+
+input.dynamic:hover{
+    border: 1px solid #fff;
+    background-color: #223;
+}
+
+input.dynamic:focus{
+    outline:none;
+    border: 1px solid #fff;
+    background-color: #223;
+}
+
+input.title {width: 18em; display:block;}
+textarea.description {width: 100%;}
+
+input.upload {display:none;}
+
+button.tools {
+    background-color: #00f;
+    border: 2px solid #000;
+    font-size: 1.2em;
+    font-weight: normal;
+    color: #fff;
+    padding: 0.2em 0.5em;
+    border-radius: 0.3em;
+}
+
+button.tools svg{
+    display: inline;
+    height: 1em;
+    vertical-align: top;
+    fill: #fff;
+}
+
+button.tools:hover {
+    border: 2px solid #fff;
+}
+
+button.tools.completed {
+    background-color: #0a0;
+}
+
+button.tools.blocked {
+    background-color: #aaa;
+    color: #888;
+    cursor: default;
+}
+
+button.tools.blocked svg {
+    fill: #888;
+}
+
+button.tools.blocked:hover {
+    border: 2px solid #000;
+}
+
+div.uploader {
+    margin: 1em 0;
+}
+
+div.center {
+    display: flex;
+    justify-content: space-evenly;
+}

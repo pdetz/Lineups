@@ -1,0 +1,86 @@
+#lineups {
+    margin-top: 1em;
+    padding: 0;
+    background: #fafafa;
+    min-height: 3em;
+    color: #000;
+    max-width: 770px;
+}
+
+table.lineup { 
+    font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", "DejaVu Sans", sans-serif;
+    text-rendering: optimizeLegibility;
+    font-size: 13px;
+    background: none; 
+    border:none; 
+    position:relative; 
+    border-collapse: collapse; 
+    border-spacing:0;
+    color: #000;
+}
+
+table.lineup td, th {
+    position:relative; 
+    padding: 0; 
+    margin:0; 
+    border:1px solid white; 
+    border-collapse: collapse; 
+    vertical-align: center; 
+    background:none;
+    line-height: 13pt;
+    width: 32px;
+}
+
+td>svg {
+    height: 12pt;
+    font-size:8pt;
+    vertical-align: bottom;
+    background-color: transparent;
+    fill: #000;
+}
+
+table.lineup td:nth-child(1), th:nth-child(1){
+    width: 195px;
+    padding: 0 4px;
+    text-align: left;
+}
+
+table.lineup tr.events > td:first-child{
+    text-align:right;
+}
+
+tr.events {
+    font-style:italic;
+}
+
+.absent{
+    font-style: italic;
+    color:#aaa;
+}
+
+div.lineup div{
+    vertical-align:top;
+}
+
+#meetTitle {
+    font-weight:bold;
+    padding: 1em 0;
+}
+
+div.description{
+    margin: 4px;
+}
+
+div.half {
+    width:50%;
+    padding: 0.25em 0.5em 0.25em 0.25em;
+    display: inline-block;
+}
+
+div.half:first-child{
+    padding: 0.25em 0.25em 0.25em 0.5em;
+}
+
+span.count {
+    font-weight:normal;
+}
