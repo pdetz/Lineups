@@ -1,22 +1,15 @@
 function loadTables(){
-    for (let i = 0; i < 5; i++){
-        ["M", "F"].forEach(gender => {
-            $("#flex").append(lineupTable(i, gender));
-        });
-    }
+    $("#flex").append([].concat(...AGE_GROUPS.map(ag => ["M", "F"].map(g => lineupTable(ag, g)))));
 }
 
-function lineupTable(ag, gender){
-    let ageGroup = AGE_GROUPS[ag];
+function lineupTable(ageGroup, gender){
 
-    let [table, tbody, th] = make("table#" + gender + ag + ".lineup");
+    let [table, tbody, th] = make("table.lineup#" + gender + AGE_GROUPS.indexOf(ageGroup));
     th.addTH(ageGroup.name + " " + GENDERS[gender] + "<span class = 'count'> (3)</span>")
-        .addTH("IM").addTH("FR").addTH("BK").addTH("BR").addTH("FL");
+        .append(STROKES.map(stroke => make("th").html(stroke)));
 
-    let eventNumbersRow = tbody.addTR("events").addTD("Event #s — Please learn");
-    ageGroup.eventNumbers.forEach(n => {
-        eventNumbersRow.addTD(egn(n, gender));
-    });
+    tbody.addTR("events").addTD("Event #s — Please learn")
+        .append(ageGroup.eventNumbers.map(n => make("td").html(egn(n, gender))));
 
     ["Swimmer 1", "Swimmer 2", "Swimmer 3"].forEach(swimmer =>{
         tbody.addTR("swimmer").addTD(swimmer).addTD().addTD().addTD().addTD().addTD();
@@ -26,24 +19,21 @@ function lineupTable(ag, gender){
 
 function fillLineups(roster){
     $("tr.swimmer").remove();
-    for (let i = 0; i < 5; i++){
-        ["M", "F"].forEach(gender => {
-            let table = $("#" + gender + i);
-            table.find("span.count").html(" (" + roster[gender][i].length + ")");
-            roster[gender][i].forEach(swimmer => {
-                table.append(swimmerRow(swimmer));
-            });
+    ["M", "F"].forEach(gender => {
+        roster[gender].forEach((group, i) => {
+            $("#" + gender + i)
+                .append(group.map(swimmer => swimmerRow(swimmer)))
+                .find("span.count").html(" (" + group.length + ")");
         });
-    }
+    });
 }
 
 function swimmerRow(swimmer){
-    let tr = make("tr#s" + swimmer.id + ".swimmer").addTD(swimmer.display(), "name");
-    for (let i = 0; i < 5; i++){
-        let e = AGE_GROUPS[swimmer.ag].eventNumbers[i];
-        tr.addTD("", STROKES[i].abbr + ".event" + egn(e, swimmer.gender));
-    }
-    return tr;
+    return make("tr#s" + swimmer.id + ".swimmer").addTD(swimmer.display(), "name")
+        .append(STROKES.map((stroke, i) => {
+            let e = AGE_GROUPS[swimmer.ag].eventNumbers[i];
+            return make("td." + stroke + ".event" + egn(e, swimmer.gender));
+        }));
 }
 
 function egn(n, g){

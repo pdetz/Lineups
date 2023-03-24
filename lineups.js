@@ -9,11 +9,17 @@ $(document).ready(function(){
 
         $("#lineups").append(make(t).html(t));
     });
-*/
+*//*
     loadTables();
+*/
+    $("#tools").div(".toolbox",
+        new DynamicUpload(loadRoster, "Team Roster", "#rosterButton", "#rosterInput", "First, upload your Team Roster:"), 
+        new DynamicUpload(loadEntries, "Meet Entries", "#entriesButton.blocked", "#entriesInput", "Then, Upload your Meet Entries"),
+        new DynamicInput("#meetTitle", "#titleInput"),
+        new DynamicPallete("header", "th", COLORS, 5, "Choose your table header color:"),
+        new DynamicPallete("row", "tr:nth-child(odd)", COLORS, 13, "Choose your row color:"),
+        //new DynamicTool(dynamicButton, PRINT + " Print Lineups", "#printButton", window.print)
+        );
 
-    loadTools();
 
-    attachHandlers();
-  
 });

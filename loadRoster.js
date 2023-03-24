@@ -54,22 +54,7 @@ function upperCaseName(name){
 }
 
 function compareNames(a, b){
-    let apellidoA = a.apellido.toUpperCase();
-    let apellidoB = b.apellido.toUpperCase();
-    let nombreA = a.nombre.toUpperCase();
-    let nombreB = b.nombre.toUpperCase();
-    if (apellidoA < apellidoB){
-        return -1;
-    }
-    if (apellidoA > apellidoB){
-        return 1;
-    }
-    if(apellidoA == apellidoB){
-        if (nombreA < nombreB){
-            return -1;
-        }
-        else {
-            return 1;
-        }
-    }
+    let [apellidoA, apellidoB] = [a, b].map(n => n.apellido.toUpperCase());
+    let [nombreA, nombreB] = [a, b].map(n => n.nombre.toUpperCase());
+    return apellidoA < apellidoB ? -1 : apellidoA > apellidoB ? 1 : nombreA < nombreB ? -1 : 1;
 }

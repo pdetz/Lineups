@@ -23,30 +23,26 @@ const STAR = '<svg xmlns="http://www.w3.org/2000/svg" height="12pt" viewBox="0 0
 
 let COLORS = ['#f66', '#fa0', '#ff0', '#7c0', '#6d9', '#6af', '#c6d', '#888',
               '#fdd', '#fea', '#ffa', '#dfb', '#dfe', '#def', '#edf', '#ddd'];
-let P = [];
+let HANDLERS = [];
 
 let KEYPRESSED = 0;
 
 function make(el) {
-    let [s1, s2] = el.split("#").map(s => s.split("."));
-    let element = s1.shift();
-    let $el = $(document.createElement(element)).addClass(s1);
+    let [[element, ...c1], id] = el.split("#").map(s => s.split(".")).map(x => [x.shift(), x]);
 
-    if (s2 != null) $el.attr("id", s2.shift()).addClass(s2);
+    let $el = $(document.createElement(element)).addClass(...c1);
+    if (id != null) $el.attr("id", id.shift()).addClass(...id);
 
     if (element == "table") {
         let $tbody = $(document.createElement("tbody"));
         let $tr = $(document.createElement("tr"));
         return [$el.append($tbody), $tbody.append($tr), $tr];
     }
-
     return $el;
 }
 
 $.fn.addTR = function(css = "") {
-    let $tr = make("tr." + css);
-    $(this).append($tr);
-    return $tr;
+    return make("tr." + css).appendTo($(this));
 }
 
 $.fn.addTD = function(cell, css = "") {

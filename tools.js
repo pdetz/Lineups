@@ -1,69 +1,69 @@
-function loadTools(){
-    $("#tools").div(".editor",
-        div(".tool",
-            div("", "Upload your roster file first. <br> Then upload your meet entries.<br>Both files should be in the HY3 format."),
-            div("", uploadButton(loadRoster, "Team Roster", "#rosterButton", "#rosterInput"), 
-                    uploadButton(loadEntries, "Meet Entries", "#entriesButton.blocked", "#entriesInput"))
-        ),
-        div(".tool",
-            div(".center", dynamicInput($("#meetTitle"), ".title"))
-        ),
-        new DynamicPallete("header", "th", COLORS, 5, "Choose your table header color:"),
-        new DynamicPallete("row", "tr:nth-child(odd)", COLORS, 13, "Choose your row color:"),
-        div(".tool", 
-            toolButton(PRINT + " Print Lineups", "#printButton", window.print)
-        )
-    );
+function Bind(ev, selector, css, func, parent, ...args){
+    this.ev = ev;
+    this.selector = selector;
+    this.parent = parent;
+    this.args = args;
+
+    this.upDater = function(parent, args){ 
+        return make(selector + css).store(parent, args)
+    };
+
+    this.parent[ev] = function(args){
+        return func(parent, args);
+    }
+
+    if (HANDLERS.indexOf(ev + selector) == -1){
+        HANDLERS.push(ev + selector);
+        $("#tools").on(ev, selector, function(e) {
+            e.stopImmediatePropagation();
+            let [parent, ...args] = $(this).read();
+            parent[ev](args);
+        });
+    }
+    return this.upDater;//, this.update];
 }
 
-function toolButton(html, css, clickHandler){
-    return make("button" + css + ".tools").append(html).handler("click", clickHandler);
+function dynamicTool(parent, element, args){
+    return make(element).store(parent, args);
 }
 
-function dynamicInput(el, css = "") {
-    let dynIn = make("input" + css + ".dynamic").val(el.html());
-    return dynIn.handler("keyup", function(){  el.html(dynIn.val()) });
+function DynamicInput(element, css="", directions="") {
+    this.element = $(element);
+
+    this.newInput = new Bind("keyup", "input.dynamic", css, function(parent){
+            parent.element.html(parent.input.val());
+    }, this);
+
+    this.input = this.newInput(this).val(this.element.html());
+
+    return tool(this.input, directions);
 }
 
-function uploadButton(loadFunction, buttonLabel, buttonID, inputID) {
-    return div(".uploader",
-        toolButton(UPLOAD + " Upload " + buttonLabel, buttonID, function(){$(inputID).click()}),
-        make("input.upload" + inputID).attr("type", "file").attr("accept", ".hy3,.HY3")
-            .handler("change", function(){
-                let reader = new FileReader();
-                reader.readAsText($(inputID).get(0).files[0]);
-                reader.onload = function(){ loadFunction(reader.result); };
-            })
-    );
+function DynamicUpload(loadFunction, buttonLabel, buttonID, inputID, directions=""){
+    this.loadFunction = loadFunction;
+
+    this.newInput = new Bind("change", "input.upload", inputID, function(parent){
+        let reader = new FileReader();
+        reader.readAsText(parent.input.get(0).files[0]);
+        reader.onload = function(){ 
+            parent.loadFunction(reader.result); };
+    }, this);
+
+    this.newButton = new Bind("click", "button.tools", buttonID, function(parent){
+        parent.input.click();
+    }, this);
+
+    this.input = this.newInput(this).attr("type", "file").attr("accept", ".hy3,.HY3");
+    this.button = this.newButton(this).html(UPLOAD + " Upload " + buttonLabel);
+
+    this.tool = tool([this.input, this.button], directions);
+    
+    return this.tool;
 }
 
-function attachHandlers(){
-    $("#tools")
-        .activateHandler("click", "button.tools:not(.blocked)")
-        .activateHandler("keyup", ".dynamic")
-        .activateHandler("mouseover", "button.palette")
-        .activateHandler("mouseleave", "button.palette")
-        .activateHandler("change", "input.upload");
-/*  
-    .on("keyup", ".test", function(e) {
-        e.stopImmediatePropagation();
-        let input = $(this);
-        input.data("stylesheet").changeColor(input.val());
-    })*/
+$.fn.read = function(){return $(this).data("args")};
+$.fn.store = function(...args){ return $(this).data("args", [...args])};
 
-}
-
-$.fn.activateHandler = function(ev, el) { //, func) {
-    return $(this).on(ev, el, function(e) {
-        e.stopImmediatePropagation();
-        $(this).run(ev);
-    });
-}
-
-$.fn.run = function(ev, ...args){
-    return $(this).data(ev).call(...args);
-}
-
-$.fn.handler = function(handler="handler", func) {
-    return $(this).data(handler, func);
+function tool(tools, directions="", wrap=".center"){
+    return div(".tool", div(".directions", directions), div(wrap, tools));
 }
