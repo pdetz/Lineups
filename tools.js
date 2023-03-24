@@ -8,7 +8,8 @@ function loadTools(){
         div(".tool",
             div(".center", dynamicInput($("#meetTitle"), ".title"))
         ),
-        colorPicker(),
+        new DynamicPallete("header", "th", COLORS, 5, "Choose your table header color:"),
+        new DynamicPallete("row", "tr:odd", COLORS, 12, "Choose your row color:"),
         div(".tool", 
             toolButton(PRINT + " Print Lineups", "#printButton", window.print)
         )
