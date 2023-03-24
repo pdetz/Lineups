@@ -13,9 +13,14 @@
 }
 
 table {
-    border-collapse: collapse;
-    border-spacing: 0;
-    margin:auto;
+    font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", "DejaVu Sans", sans-serif;
+    text-rendering: optimizeLegibility;
+    margin:0 0 1em 0;
+    background: none; 
+    border:none; 
+    border-collapse: collapse; 
+    border-spacing:0;
+    color: #000;
 }
 
 td {

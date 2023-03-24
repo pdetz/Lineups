@@ -10,9 +10,11 @@ function DynamicPallete(id, selector, colors, c, directions){
                     div(".palette", this.buttons));    
     //let t = div("", make("input.test").handler("stylesheet", stylesheet));
     
-    this.changeColor = function(n){
-        console.log(n);
+    this.applyColor = function(n){
         this.stylesheet.html(this.selector + "{background-color:" + colors[n] + ";}");
+    }
+    this.changeColor = function(n){
+        this.applyColor(n);
         this.buttons[this.c].removeClass("sel");
         this.buttons[n].addClass("sel");
         this.c = n;
@@ -23,16 +25,8 @@ function DynamicPallete(id, selector, colors, c, directions){
 }
 
 function paletteButton(stylesheet, c){
-    return toolButton("", ".palette", 
-        function(){
-            console.log(stylesheet);
-            stylesheet.changeColor(c);
-        })
-        .handler("mouseover", function(){
-            $(stylesheet.selector).css("background-color", stylesheet.colors[c]);
-        })
-        .handler("mouseleave", function(){
-            $(stylesheet.selector).attr("style", "");
-        })
+    return toolButton("", ".palette", function(){  stylesheet.changeColor(c) })
+        .handler("mouseover", function(){ stylesheet.applyColor(c) })
+        .handler("mouseleave", function(){ stylesheet.applyColor(stylesheet.c)})
         .css("background-color", stylesheet.colors[c]);
 }

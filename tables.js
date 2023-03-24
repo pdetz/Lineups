@@ -1,12 +1,8 @@
-function loadTables(){    
+function loadTables(){
     for (let i = 0; i < 5; i++){
-        let tables = make("div.lineup");
         ["M", "F"].forEach(gender => {
-            let half = make("div.half");
-            half.append(lineupTable(i, gender));
-            tables.append(half);
+            $("#flex").append(lineupTable(i, gender));
         });
-        $("#lineups").append(tables);
     }
 }
 

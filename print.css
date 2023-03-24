@@ -7,22 +7,35 @@
         float:none;
     }
 
-    .frame {
-        display: block;
+    #lineups {
         padding: 0;
         margin: 0;
-        background: transparent;
-        color: #000;
+        background: none;
+        min-width: none;
         width: 100%;
     }
 
-    
-    div.lineup {
-        width:100%;
-        page-break-inside: avoid;
-        margin-bottom: 1em;
+    #flex {
+        justify-content: space-between;
+        line-height: 12pt;
+        font-size: 12px;
     }
 
+    table.lineup {
+        page-break-inside: avoid;
+    }
+
+    table.lineup td, th {
+        line-height: 12pt;
+        font-size: 12px;
+        width: 32px;
+    }
+    
+    table.lineup td:nth-child(1), th:nth-child(1){
+        width: 185px;
+        padding: 0 4px;
+        text-align: left;
+    }
 
     :root {
         background:none;
