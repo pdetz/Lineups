@@ -14,7 +14,7 @@ function loadRoster(uploadedFile){
         }));
     });
     fillLineups(roster);
-    $("#roster").siblings("button").addClass("completed").html(BOLT + " Roster Loaded")
+    $("#roster").siblings("button").addClass("completed").html("Roster Loaded")
         .siblings("span").slideUp();
     $("#entries").parent().slideDown();
 }

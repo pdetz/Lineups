@@ -1,7 +1,6 @@
 function loadEntries(uploadedFile){
     let title = uploadedFile.slice(0,-1).split("\nB1")[1].slice(0, 40).trim();
-    $("#meetTitle").html(title);
-    $("#titleInput").val(title);
+    $("#meetTitle").html(make("input.dynamic").val(title + " -- Click here to edit"));
     $("td>svg").remove();
     
     let athletes = uploadedFile.slice(0,-1).split("\nD1");
@@ -18,12 +17,13 @@ function loadEntries(uploadedFile){
             td.addClass(e == tdEvent(td) ? "swim" : "up");
         });
     });
-    $("#entries").siblings("button").html(BOLT + "Entries Loaded").addClass("completed").parent().children("span").slideUp();
+    $("#entries").siblings("button").html("Entries Loaded").addClass("completed").parent().children("span").slideUp();
     $("td.swim").html($("button.swim.sel").html());
     $("td.up").html($("button.up.sel").html());
-    $("inputTitle").val($("#meetTitle").html());
+    
+    $("#inputTitle").val($("#meetTitle").html());
 }
 
 function tdEvent(td){
     return parseInt(td[0].classList[1].replace("event", ""));
-}
+} 

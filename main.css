@@ -3,6 +3,7 @@ body{
     display:flex;
     flex-wrap: wrap;
     justify-content: center;
+    overflow-y:hidden;
 }
 
 .left {
@@ -49,19 +50,57 @@ table {
 
 .column::-webkit-scrollbar {
     background:#000;
-    width: 2em;
+    width: 1em;
 }
 
 .column::-webkit-scrollbar-thumb {
     background:#111;
-    width: 2em;
+    width: 1em;
     border-radius: 2em;
 }
 
-#copyright {
+.about {
     display: flex;
-    justify-content: flex-end;
-    margin: 4px 0;
-    color: #223;
-    font-size: 0.875rem;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0.2em 1em 1em 1em;
 }
+.about > div{
+    color: #334;
+    font-size: 0.875rem;
+    margin:0.2em;
+    border:none;
+    padding:0;
+}
+#about-btn:hover{
+    cursor: pointer;
+    color:#6af;
+}
+  .blur{
+    filter:blur(5px)
+  }
+  a{
+    color:#6af
+  }
+  /* Styling for the modal container */
+#modal-container {
+    display: none; /* Hide the container by default */
+    position: fixed; /* Set it to fixed position */
+    z-index: 100; /* Set the z-index to be on top of everything else */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Allow scrolling */
+    background-color: rgba(0,0,0,0.4); /* Add a black background with opacity */
+  }
+#about{
+    background-color: #000;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    max-width: 30em;
+    text-align: center;
+    position: relative;
+    border-radius: 0.5em;
+  }

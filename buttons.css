@@ -5,9 +5,7 @@ button {
     margin: 0.2em;
     padding: 0.2em 0.5em;
     border-radius: 0.3em;
-
 }
-
 button svg {
     display: inline;
     height: 1em;
@@ -23,12 +21,6 @@ button.palette {
     font-size: 1em;
     color: #000;
 }
-
-button.palette:hover{
-    border:1px solid #fff;
-    filter: brightness(80%)
-}
-
 button.palette.sel{
     border: 2px solid #fff;
 }
@@ -43,9 +35,17 @@ button.palette.sel.up{
 button.tools {
     background-color: #00f;
     border: 2px solid #000;
+    margin:0;
     color: #fff;
-    width: 100%;
-    margin: 0.2em 0; 
+    width: 100%; 
+}
+
+div.upload:nth-child(1){
+    margin-top: -2px;
+}
+
+div.upload:nth-child(2){
+    margin-top: 1em;
 }
 
 button.tools svg{
@@ -54,6 +54,7 @@ button.tools svg{
 
 button.tools:hover {
     border: 2px solid #fff;
+    filter: brightness(70%);
 }
 
 button.tools:active{
@@ -61,54 +62,31 @@ button.tools:active{
     filter: brightness(50%);
 }
 
+
+button.palette:hover{
+    border:1px solid #fff;
+    filter: brightness(80%)
+}
+button.palette:active{
+    border:1px solid #fff;
+    filter: brightness(50%)
+}
+
 button.tools.completed {
     background-color: #0a0;
 }
 
-button.tools.blocked {
-    background-color: #ddd;
-    color: #444;
-    cursor: default;
-}
-button.tools.blocked svg {
-    fill: #888;
-}
-
-button.tools.blocked:hover {
-    border: 2px solid #000;
-}
-
 div.toggle{
-    border: 2px solid #000;
+    display: flex;
+    justify-content: space-evenly;
     flex-flow: row;
-    margin:0;
-    padding:0;
-    border-radius: 0.3em;
     align-content: stretch;
     margin-bottom:0.2em ;
+    cursor: pointer;
 }
-div.toggle:hover{
-    border: 2px solid #fff;
+div.t{
+    color: #6af;
 }
-
-button.tools.toggle{
-    border:0;
-    margin:0;
-    border:0;
-    width:50%;
-    flex: 1;
-}
-
-button.tools.toggle:nth-child(1){
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-}
-button.tools.toggle:nth-child(2){
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-}
-
-button.tools.toggle.off{
-    background-color: #aaa;
+div.t.off{
     color: #888;
 }

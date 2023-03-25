@@ -1,7 +1,5 @@
 function loadTables(){
     $("#flex").append([].concat(...AGE_GROUPS.map(ag => ["M", "F"].map(g => lineupTable(ag, g)))));
-    $("td.swim").html(ICONS[0]);
-    $("td.up").html(ICONS[25]);
 }
 
 function lineupTable(ageGroup, gender){
@@ -12,7 +10,7 @@ function lineupTable(ageGroup, gender){
     tbody.addTR("events").addTD("Event #s — Please learn")
         .append(ageGroup.eventNumbers.map(n => make("td").html(egn(n, gender))));
 
-    ["Swimmer 1", "Swimmer 2", "Swimmer 3"].forEach(swimmer =>{
+    ["Your Swimmer Here", "Your Swimmer Here", "Your Swimmer Here"].forEach(swimmer =>{
         tbody.addTR("swimmer").addTD(swimmer).addTD("", "swim").addTD("", "up").addTD("", "swim").addTD("", "up").addTD("", "swim");
     });
     return table;

@@ -5,23 +5,18 @@ function iconPicker(i, u, icons=ICONS){
     let up = picker(u, icons.reverse(),
                 (button, icon) => button.html(icon),
                 el => $("td.up").html(el.html()), "button.palette.up").hide();
-    toggle = toggleButtons("Regular", "Swim Up", swim, up);
-
-    return [toggle, div(".b", swim, up)]
+    return div(".b", toggleButton("Regular Swims", "Swim Ups", swim, up), swim, up);
 }
 
-function toggleButtons(html1, html2, el1, el2){
-    return div(".toggle", 
-    make("button.tools.toggle").html(html1),
-    make("button.tools.toggle.off").html(html2))
+function toggleButton(html1, html2, el1, el2){
+    return div(".toggle", div(".t", html1), div(".t.off", html2))
     .click(function(e){
-        $("button.toggle").toggleClass("off");
+        $("div.t").toggleClass("off");
         el1.slideToggle(); el2.slideToggle();
     });
 }
 
 function colorPicker(style, selector, i, colors=COLORS, attr="background-color"){
-    let stylesheet = $("#" + selector);
     return picker(i, colors, 
         (button, col) => button.css(attr, col),
         el => $(style).html(selector + "{" + attr + ":" + $(el).css(attr) + "}"))
@@ -32,7 +27,7 @@ function picker(i, items, bFunction, pickFunction, btn="button.palette"){
         .on("click", btn, (e) =>  {
             pickFunction($(e.currentTarget));
             $(e.target).addClass("sel").siblings().removeClass("sel");
-        });
+        }).children(btn).eq(i).click().parent();
 }
 
 function input(id, el) {
@@ -42,17 +37,17 @@ function input(id, el) {
 }
 
 function uploadFile(html, loadFunction, id){
-    return div("flex", upload = make("input.upload" + id).attr("type", "file").attr("accept", ".hy3,.HY3")
+    return div(".upload", button(html, function(){$(id).click()}),
+    make("input.upload" + id).attr("type", "file").attr("accept", ".hy3,.HY3")
         .on("change", function(e){
             let reader = new FileReader();
             reader.readAsText($(id).get(0).files[0]);
             reader.onload = function() { loadFunction(reader.result)};
-        }),
-        button(html, function(){$(id).click()}));
+        }));
 }
 
 function printButton(){
-    return button(PRINT + "Print Lineups", () => window.print())
+    return button(PRINT + " Print Lineups", () => window.print())
 }
 
 function button(html, handler) {
