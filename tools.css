@@ -1,103 +1,60 @@
-#toolContainer {
+#tools {
     display:flex;
     flex-direction: column;
-    max-width: 400px;
-    padding-top: 1em;
-}
-
-#tools {
     padding: 0.5em;
     border: none;
-    border-radius: 0.3em;
+    max-width: 500px;
+    padding-top: 1em;
 }
 
 div.tool {
     display: flex;
-    flex-wrap: wrap;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
     align-content: center;
     padding: 0.5em;
-    margin: 1em 0.5em;
-    border: 1px solid #223;
+    margin: 1.5em 0.5em;
     border-radius: 0.3em;
     text-align: center;
 }
 
+div.palette{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 20rem;
+    border-radius: 0.3em;
+    max-height: 25em;
+}
+div.b{
+    padding: 0.5em;
+    margin: 1em 0;
+    border-radius: 0.3em;
+    border: 1px solid #223;
+}
+
 input.dynamic{
-    background-color: #000;
+    background-color: #223;
     color: #fff;
-    border: 1px solid #aaa;
+    font-size: 1em;
+    border: 1px solid #778;
     border-radius: 0.3em;
     margin: 2px 2px 4px 2px;
     padding: 6px;
 }
 
+div.tool > span{display:none}
+
 input.dynamic:hover{
-    border: 1px solid #fff;
-    background-color: #223;
+    background-color: #334;
 }
 
 input.dynamic:focus{
     outline:none;
     border: 1px solid #fff;
-    background-color: #223;
+    background-color: #334;
 }
 
-input.title {width: 18em; display:block;}
 textarea.description {width: 100%;}
 
 input.upload {display:none;}
-
-button.tools {
-    background-color: #00f;
-    border: 2px solid #000;
-    font-size: 1.2em;
-    font-weight: normal;
-    color: #fff;
-    padding: 0.2em 0.5em;
-    border-radius: 0.3em;
-}
-
-button.tools svg{
-    display: inline;
-    height: 1em;
-    vertical-align: top;
-    fill: #fff;
-}
-
-button.tools:hover {
-    border: 2px solid #fff;
-}
-
-button.tools:active {
-    border: 2px solid #000;
-    filter: brightness(50%);
-}
-
-button.tools.completed {
-    background-color: #0a0;
-}
-
-button.tools.blocked {
-    background-color: #ddd;
-    color: #444;
-    cursor: default;
-}
-
-button.tools.blocked svg {
-    fill: #888;
-}
-
-button.tools.blocked:hover {
-    border: 2px solid #000;
-}
-
-div.uploader {
-    margin: 1em 0;
-}
-
-div.center {
-    display: flex;
-    justify-content: space-evenly;
-}

@@ -1,5 +1,7 @@
 @media print {
 
+    .noprint{display:none}
+
     .column {
         width: 100%;
         padding: 0;
@@ -39,10 +41,6 @@
 
     :root {
         background:none;
-    }
-
-    #toolContainer {
-        display: none;
     }
 
     .column::-webkit-scrollbar {

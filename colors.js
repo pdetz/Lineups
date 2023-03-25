@@ -73,3 +73,34 @@ function changeStyle(){
     //let style = $("#" + el).html();
     console.log("new", newStyle);
 }
+
+
+
+
+function DynamicTool(html, css, func, directions=""){
+    this.button = dynamicTool(this, css).html(html)
+        .bind("click", func);
+    return tool(this.button);
+}
+
+function dynamicTool(parent, selector, css="", ...args){
+    return make(selector + css).store(parent, selector, args);
+}
+
+$.fn.bind = function(ev, func, css=""){
+    let tool = $(this);
+    let [parent, selector, args] = tool.read();
+    parent[ev] = function(args){
+        return func(parent, args);
+    }
+    if (HANDLERS.indexOf(ev + selector + css) == -1){
+        HANDLERS.push(ev + selector + css);
+        console.log(HANDLERS);
+        $("#tools").on(ev, selector + css, function(e) {
+            e.stopImmediatePropagation();
+            let [parent, selector, ...args] = $(this).read();
+            parent[ev](args);
+        });
+    }
+    return tool;
+}

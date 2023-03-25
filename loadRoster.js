@@ -14,17 +14,15 @@ function loadRoster(uploadedFile){
         }));
     });
     fillLineups(roster);
-    $("#entriesButton").removeClass("blocked");
-    $("#rosterButton").addClass("completed");
+    $("#roster").siblings("button").addClass("completed").html(BOLT + " Roster Loaded")
+        .siblings("span").slideUp();
+    $("#entries").parent().slideDown();
 }
 
 function Roster(){
     this.M = [[], [], [], [], []];
     this.F = [[], [], [], [], []];
-}
-
-Roster.prototype.addSwimmer = function(swimmer){
-    this[swimmer.gender][swimmer.ag].push(swimmer);
+    this.addSwimmer = (swimmer) => this[swimmer.gender][swimmer.ag].push(swimmer);
 }
 
 function Swimmer(swimmer){
@@ -34,13 +32,9 @@ function Swimmer(swimmer){
     this.preferredName = swimmer.nickname == "" ? this.nombre : swimmer.nickname;
     this.gender = swimmer.gender;
     this.id = swimmer.id.slice(-14);
-
     this.age = age(this.dob, "06012022");
+    this.display = disp = this.apellido + ", " + this.preferredName + " " + this.age;
     this.ag = Math.min(Math.max(Math.floor((this.age - 7) / 2), 0), 4);
-
-    this.display = function(){
-        return disp = this.apellido + ", " + this.preferredName + " " + this.age;
-    }
 }
 
 function age(dob, date){

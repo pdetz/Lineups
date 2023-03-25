@@ -15,10 +15,13 @@ function loadEntries(uploadedFile){
             let e = parseInt(hy3Entry.slice(39, 41).trim());
             //if (e is an event number found in the athlete's age groups events array)
             td = tr.find("td." + STROKES[EVENTS[e-1].stroke]);
-            td.append(e == tdEvent(td) ? BOLT : STAR);
+            td.addClass(e == tdEvent(td) ? "swim" : "up");
         });
     });
-    $("#entriesButton").addClass("completed");
+    $("#entries").siblings("button").html(BOLT + "Entries Loaded").addClass("completed").parent().children("span").slideUp();
+    $("td.swim").html($("button.swim.sel").html());
+    $("td.up").html($("button.up.sel").html());
+    $("inputTitle").val($("#meetTitle").html());
 }
 
 function tdEvent(td){

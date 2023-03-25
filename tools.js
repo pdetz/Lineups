@@ -1,69 +1,74 @@
-function Bind(ev, selector, css, func, parent, ...args){
-    this.ev = ev;
-    this.selector = selector;
-    this.parent = parent;
-    this.args = args;
+function iconPicker(i, u, icons=ICONS){
+    let swim = picker(i, icons,
+                (button, icon) => button.html(icon),
+                el => $("td.swim").html(el.html()), "button.palette.swim");
+    let up = picker(u, icons.reverse(),
+                (button, icon) => button.html(icon),
+                el => $("td.up").html(el.html()), "button.palette.up").hide();
+    toggle = toggleButtons("Regular", "Swim Up", swim, up);
 
-    this.upDater = function(parent, args){ 
-        return make(selector + css).store(parent, args)
-    };
+    return [toggle, div(".b", swim, up)]
+}
 
-    this.parent[ev] = function(args){
-        return func(parent, args);
-    }
+function toggleButtons(html1, html2, el1, el2){
+    return div(".toggle", 
+    make("button.tools.toggle").html(html1),
+    make("button.tools.toggle.off").html(html2))
+    .click(function(e){
+        $("button.toggle").toggleClass("off");
+        el1.slideToggle(); el2.slideToggle();
+    });
+}
 
-    if (HANDLERS.indexOf(ev + selector) == -1){
-        HANDLERS.push(ev + selector);
-        $("#tools").on(ev, selector, function(e) {
-            e.stopImmediatePropagation();
-            let [parent, ...args] = $(this).read();
-            parent[ev](args);
+function colorPicker(style, selector, i, colors=COLORS, attr="background-color"){
+    let stylesheet = $("#" + selector);
+    return picker(i, colors, 
+        (button, col) => button.css(attr, col),
+        el => $(style).html(selector + "{" + attr + ":" + $(el).css(attr) + "}"))
+}
+
+function picker(i, items, bFunction, pickFunction, btn="button.palette"){
+    return div(".palette", items.map((item, it) => bFunction(make(btn + (it==i ? ".sel" : "")), item, i)))
+        .on("click", btn, (e) =>  {
+            pickFunction($(e.currentTarget));
+            $(e.target).addClass("sel").siblings().removeClass("sel");
         });
-    }
-    return this.upDater;//, this.update];
 }
 
-function dynamicTool(parent, element, args){
-    return make(element).store(parent, args);
+function input(id, el) {
+    return make("input.dynamic" + id).val($(el).html())
+        .keyup( (e) => e.key === "Escape" ? e.target.blur() : $(el).html($(e.target).val())
+    )
 }
 
-function DynamicInput(element, css="", directions="") {
-    this.element = $(element);
-
-    this.newInput = new Bind("keyup", "input.dynamic", css, function(parent){
-            parent.element.html(parent.input.val());
-    }, this);
-
-    this.input = this.newInput(this).val(this.element.html());
-
-    return tool(this.input, directions);
+function uploadFile(html, loadFunction, id){
+    return div("flex", upload = make("input.upload" + id).attr("type", "file").attr("accept", ".hy3,.HY3")
+        .on("change", function(e){
+            let reader = new FileReader();
+            reader.readAsText($(id).get(0).files[0]);
+            reader.onload = function() { loadFunction(reader.result)};
+        }),
+        button(html, function(){$(id).click()}));
 }
 
-function DynamicUpload(loadFunction, buttonLabel, buttonID, inputID, directions=""){
-    this.loadFunction = loadFunction;
-
-    this.newInput = new Bind("change", "input.upload", inputID, function(parent){
-        let reader = new FileReader();
-        reader.readAsText(parent.input.get(0).files[0]);
-        reader.onload = function(){ 
-            parent.loadFunction(reader.result); };
-    }, this);
-
-    this.newButton = new Bind("click", "button.tools", buttonID, function(parent){
-        parent.input.click();
-    }, this);
-
-    this.input = this.newInput(this).attr("type", "file").attr("accept", ".hy3,.HY3");
-    this.button = this.newButton(this).html(UPLOAD + " Upload " + buttonLabel);
-
-    this.tool = tool([this.input, this.button], directions);
-    
-    return this.tool;
+function printButton(){
+    return button(PRINT + "Print Lineups", () => window.print())
 }
 
-$.fn.read = function(){return $(this).data("args")};
-$.fn.store = function(...args){ return $(this).data("args", [...args])};
+function button(html, handler) {
+    return make("button.tools").html(html)
+        .click(handler)
+}
 
-function tool(tools, directions="", wrap=".center"){
-    return div(".tool", div(".directions", directions), div(wrap, tools));
+function tool(text, ...tools){
+    return div(".tool", make("span").append(text), ...tools)
+}
+
+function tools(n){
+    console.log($(".tool"));
+    return $("div.tool").eq(n);
+}
+
+function div(css, ...contents){
+    return make("div" + css).append(...contents);
 }

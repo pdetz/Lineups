@@ -1,9 +1,10 @@
 function loadTables(){
     $("#flex").append([].concat(...AGE_GROUPS.map(ag => ["M", "F"].map(g => lineupTable(ag, g)))));
+    $("td.swim").html(ICONS[0]);
+    $("td.up").html(ICONS[25]);
 }
 
 function lineupTable(ageGroup, gender){
-
     let [table, tbody, th] = make("table.lineup#" + gender + AGE_GROUPS.indexOf(ageGroup));
     th.addTH(ageGroup.name + " " + GENDERS[gender] + "<span class = 'count'> (3)</span>")
         .append(STROKES.map(stroke => make("th").html(stroke)));
@@ -12,7 +13,7 @@ function lineupTable(ageGroup, gender){
         .append(ageGroup.eventNumbers.map(n => make("td").html(egn(n, gender))));
 
     ["Swimmer 1", "Swimmer 2", "Swimmer 3"].forEach(swimmer =>{
-        tbody.addTR("swimmer").addTD(swimmer).addTD().addTD().addTD().addTD().addTD();
+        tbody.addTR("swimmer").addTD(swimmer).addTD("", "swim").addTD("", "up").addTD("", "swim").addTD("", "up").addTD("", "swim");
     });
     return table;
 }
@@ -29,7 +30,7 @@ function fillLineups(roster){
 }
 
 function swimmerRow(swimmer){
-    return make("tr#s" + swimmer.id + ".swimmer").addTD(swimmer.display(), "name")
+    return make("tr#s" + swimmer.id + ".swimmer").addTD(swimmer.display, "name")
         .append(STROKES.map((stroke, i) => {
             let e = AGE_GROUPS[swimmer.ag].eventNumbers[i];
             return make("td." + stroke + ".event" + egn(e, swimmer.gender));
