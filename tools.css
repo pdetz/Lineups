@@ -52,13 +52,15 @@ input.dynamic{
     font-weight: bold;
 }
 
-
-input.dynamic:focus{
+input.dynamic:hover{
     background-color: #def;
 }
 
-div.tool > span{display:none}
+input.dynamic:focus{
+    background-color: #def;
+    border:1px solid #6af
+}
 
-textarea.description {width: 100%;}
+div.tool > span{display:none}
 
 input.upload {display:none;}

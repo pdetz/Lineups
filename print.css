@@ -8,6 +8,14 @@
         height: auto;
         float:none;
     }
+    #displayArea {
+        display:flex;
+        direction: ltr;
+        margin: 0;
+        padding: 0;
+        background: none;
+        color: #000;
+    }
 
     #lineups {
         padding: 0;

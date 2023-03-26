@@ -1,6 +1,6 @@
 function loadEntries(uploadedFile){
     let title = uploadedFile.slice(0,-1).split("\nB1")[1].slice(0, 40).trim();
-    $("#meetTitle").html(make("input.dynamic").val(title + " -- Click here to edit"));
+    $("#meetTitle").html(make("input.dynamic").val(title));
     $("td>svg").remove();
     
     let athletes = uploadedFile.slice(0,-1).split("\nD1");

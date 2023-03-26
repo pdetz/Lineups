@@ -1,18 +1,20 @@
-function iconPicker(i, u, icons=ICONS){
-    let swim = picker(i, icons,
+function iconPicker(i, u, icons=ICONS, css="icons"){
+    return div(".b", 
+        toggleButton("Regular Swims", "Swim Ups", "div.palette.icons"),
+        picker(i, icons,
                 (button, icon) => button.html(icon),
-                el => $("td.swim").html(el.html()), "button.palette.swim");
-    let up = picker(u, icons.reverse(),
+                el => $("td.swim").html(el.html()), "button.palette.swim", ".icons"),
+        picker(u, icons.reverse(),
                 (button, icon) => button.html(icon),
-                el => $("td.up").html(el.html()), "button.palette.up").hide();
-    return div(".b", toggleButton("Regular Swims", "Swim Ups", swim, up), swim, up);
+                el => $("td.up").html(el.html()), "button.palette.up", ".icons").hide()
+    )
 }
 
-function toggleButton(html1, html2, el1, el2){
+function toggleButton(html1, html2, toggledivs){
     return div(".toggle", div(".t", html1), div(".t.off", html2))
     .click(function(e){
         $("div.t").toggleClass("off");
-        el1.slideToggle(); el2.slideToggle();
+        $(toggledivs).slideToggle();
     });
 }
 
@@ -22,8 +24,8 @@ function colorPicker(style, selector, i, colors=COLORS, attr="background-color")
         el => $(style).html(selector + "{" + attr + ":" + $(el).css(attr) + "}"))
 }
 
-function picker(i, items, bFunction, pickFunction, btn="button.palette"){
-    return div(".palette", items.map((item, it) => bFunction(make(btn + (it==i ? ".sel" : "")), item, i)))
+function picker(i, items, bFunction, pickFunction, btn="button.palette", css=""){
+    return div(".palette"+css, items.map((item, it) => bFunction(make(btn + (it==i ? ".sel" : "")), item, i)))
         .on("click", btn, (e) =>  {
             pickFunction($(e.currentTarget));
             $(e.target).addClass("sel").siblings().removeClass("sel");

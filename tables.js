@@ -1,5 +1,5 @@
 function loadTables(){
-    $("#flex").append([].concat(...AGE_GROUPS.map(ag => ["M", "F"].map(g => lineupTable(ag, g)))));
+    $("#lineups").append([].concat(...AGE_GROUPS.map(ag => ["M", "F"].map(g => lineupTable(ag, g)))));
 }
 
 function lineupTable(ageGroup, gender){
@@ -9,10 +9,12 @@ function lineupTable(ageGroup, gender){
 
     tbody.addTR("events").addTD("Event #s — Please learn")
         .append(ageGroup.eventNumbers.map(n => make("td").html(egn(n, gender))));
-
-    ["Your Swimmer Here", "Your Swimmer Here", "Your Swimmer Here"].forEach(swimmer =>{
-        tbody.addTR("swimmer").addTD(swimmer).addTD("", "swim").addTD("", "up").addTD("", "swim").addTD("", "up").addTD("", "swim");
-    });
+    tbody.addTR("swimmer").addTD("Regular age group swims are").addTD("", "swim").addTD("").addTD("").addTD("").addTD("")
+    tbody.addTR("swimmer").addTD("marked with these emojis", "indent").addTD("").addTD("", "swim").addTD("").addTD("").addTD("")
+    tbody.addTR("swimmer").addTD("Swimmers who are swimming up").addTD("").addTD("").addTD("", "up").addTD("").addTD("");
+    tbody.addTR("swimmer").addTD("are marked with these emojis", "indent").addTD("").addTD("").addTD("").addTD("", "up").addTD("");
+    tbody.addTR("swimmer").addTD("Good luck at the meet!").addTD("", "swim").addTD("", "up").addTD("", "swim").addTD("", "up").addTD("", "swim");
+    
     return table;
 }
 

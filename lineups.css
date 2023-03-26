@@ -1,19 +1,19 @@
 #lineups {
-    margin-top: 1em;
-    padding: 0;
-    background: #fafafa;
-    min-height: 3em;
     color: #000;
-    min-width: 380px;
+    direction: ltr;
+    text-align: center;
 }
 
-#flex{
+.flex{
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
-    justify-content: space-evenly;
-    width: 100%;
+    justify-content: space-around;
     padding-bottom: 1rem;
+}
+
+table.lineup{
+    width: 380px;
 }
 
 table.lineup td, th {
@@ -25,13 +25,17 @@ table.lineup td, th {
     background:none;
     line-height: 13pt;
     font-size: 13px;
-    width: 32px;
+    min-width: 32px;
 }
 
 table.lineup td:nth-child(1), th:nth-child(1){
     width: 192px;
     padding: 0 4px;
     text-align: left;
+}
+
+table.lineup td.indent{
+    padding-left: 20px;
 }
 
 td>svg {
@@ -58,6 +62,12 @@ tr.events {
 #meetTitle {
     font-weight:bold;
     padding: 1em 0;
+    width:100%;
+}
+
+div.subtitle{
+    font-weight: normal;
+    font-size:0.9em;
 }
 
 div.description{

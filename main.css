@@ -16,12 +16,15 @@ body{
     overflow-y: scroll;
 }
 
-.displayArea {
-    max-width: 770px;
+#displayArea {
+    display:flex;
+    max-width:800px;
     direction: ltr;
-    margin-left: 1.5rem;
-    margin-right: 0.5rem;
+    margin: 1em;
     text-align: center;
+    padding: 1em;
+    background: #fafafa;
+    color: #000;
 }
 
 .column.left > .displayArea {
