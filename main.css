@@ -4,7 +4,7 @@ body{
     flex-wrap: wrap;
     justify-content: center;
     overflow-y:hidden;
-}
+} 
 
 .left {
     direction:rtl;
