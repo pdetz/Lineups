@@ -10,9 +10,9 @@ function lineupTable(ageGroup, gender){
     tbody.addTR("events").addTD("Event #s — Please learn")
         .append(ageGroup.eventNumbers.map(n => make("td").html(egn(n, gender))));
     tbody.addTR("swimmer").addTD("Regular age group swims are").addTD("", "swim").addTD("").addTD("").addTD("").addTD("")
-    tbody.addTR("swimmer").addTD("marked with these emojis", "indent").addTD("").addTD("", "swim").addTD("").addTD("").addTD("")
-    tbody.addTR("swimmer").addTD("Swimmers who are swimming up").addTD("").addTD("").addTD("", "up").addTD("").addTD("");
-    tbody.addTR("swimmer").addTD("are marked with these emojis", "indent").addTD("").addTD("").addTD("").addTD("", "up").addTD("");
+    tbody.addTR("swimmer").addTD("marked with these emojis").addTD("").addTD("", "swim").addTD("").addTD("").addTD("")
+    tbody.addTR("swimmer").addTD("Swim ups are marked", "indent").addTD("").addTD("").addTD("", "up").addTD("").addTD("");
+    tbody.addTR("swimmer").addTD("with these emojis", "indent").addTD("").addTD("").addTD("").addTD("", "up").addTD("");
     tbody.addTR("swimmer").addTD("Good luck at the meet!").addTD("", "swim").addTD("", "up").addTD("", "swim").addTD("", "up").addTD("", "swim");
     
     return table;
@@ -30,11 +30,12 @@ function fillLineups(roster){
 }
 
 function swimmerRow(swimmer){
-    return make("tr#s" + swimmer.id + ".swimmer").addTD(swimmer.display, "name")
+    swimmer.tr = make("tr#s" + swimmer.id + ".swimmer").addTD(swimmer.display, "name")
         .append(STROKES.map((stroke, i) => {
             let e = AGE_GROUPS[swimmer.ag].eventNumbers[i];
             return make("td." + stroke + ".event" + egn(e, swimmer.gender));
         }));
+    return swimmer.tr;
 }
 
 function egn(n, g){

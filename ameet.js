@@ -4,7 +4,7 @@ function AgeGroup(name, ages, eventNumbers){
     this.eventNumbers = eventNumbers;
 }
 
-const AGEDATE = "06012022"
+const AGEDATE = "06012022";
 
 const _8U = new AgeGroup("8 & Under", [4, 5, 6, 7, 8], [1, 7, 17, 29, 39]);
 const _9_10 = new AgeGroup("9-10", [9, 10], [1, 9, 19, 31, 41]);

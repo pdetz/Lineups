@@ -16,6 +16,8 @@ const stars = ['⭐', '🌟', '🌠'];
 const hearts = ['❤️', '🧡', '💛', '💚', '💙', '💜', '🖤', '🤍', '🤎'];
 const ICONS = [...aquatic, ...reptiles, ...birds, ...animals, ...swimmers, ...nature, ...stars, ...hearts];
 
+let ROSTER = [];
+
 const random = (min=0, max=ICONS.length) => Math.floor(Math.random() * (max - min + 1)) + min;
 
 function make(el) {

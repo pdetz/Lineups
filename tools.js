@@ -4,7 +4,7 @@ function iconPicker(i, u, icons=ICONS, css="icons"){
         picker(i, icons,
                 (button, icon) => button.html(icon),
                 el => $("td.swim").html(el.html()), "button.palette.swim", ".icons"),
-        picker(u, icons.reverse(),
+        picker(u, icons,
                 (button, icon) => button.html(icon),
                 el => $("td.up").html(el.html()), "button.palette.up", ".icons").hide()
     )
