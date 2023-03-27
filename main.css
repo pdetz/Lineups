@@ -9,7 +9,6 @@ body{
 
 .left {
     direction:rtl;
-    height: 100vh;
     overflow-y: scroll;
 }
 
