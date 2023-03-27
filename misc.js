@@ -46,7 +46,3 @@ $.fn.addTR = function(css = "") {
 $.fn.addTD = function(cell, css = "") {
     return $(this).append(make("td." + css).html(cell));
 }
-
-$.fn.addTH = function(cell, css = "") {
-    return $(this).append(make("th." + css).html(cell));
-}

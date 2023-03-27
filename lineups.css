@@ -1,76 +1,26 @@
-#lineups {
-    color: #000;
-    direction: ltr;
-    text-align: center;
-}
-
-.flex{
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    justify-content: space-around;
-    padding-bottom: 1rem;
-}
-
-table.lineup{
-    max-width: 49%;
-    min-width: 330px;
-}
-
-table.lineup td {
-    padding: 0;
-    margin:0; 
-    border:1px solid white; 
-    border-collapse: collapse; 
-    vertical-align: center; 
-    background:none;
-    line-height: 13pt;
-    font-size: 13px;
-    width:32px
-}
-
-table.lineup tr:nth-child(even){
-    background-color: #fafafa;
-}
-
-table.lineup td:nth-child(1) {
-    width: 192px;
-    padding: 0 4px;
-    text-align: left;
-}
-
-table.lineup td.right{
-    text-align: right;
-}
-table.lineup td.secret{
-    color:transparent;
-}
-
-td>svg {
-    height: 12pt;
-    font-size:8pt;
-    vertical-align: bottom;
-    background-color: transparent;
-    fill: #000;
-}
-
-table.lineup tr.events > td:first-child{
-    text-align:right;
-}
-
-tr.events {
-    font-style:italic;
-}
-
-.absent{
-    font-style: italic;
-    color:#aaa;
-}
-
 #meetTitle {
     font-weight:bold;
     padding: 1em 0;
     width:100%;
+}
+
+input.dynamic{
+    width:80%;
+    background:none;
+    outline:none;
+    text-align: center;
+    border-radius: 0.3em;
+    padding: 6px;
+    font-weight: bold;
+}
+
+input.dynamic:hover{
+    background-color: #def;
+}
+
+input.dynamic:focus{
+    background-color: #def;
+    border:1px solid #6af
 }
 
 div.subtitle{
@@ -78,10 +28,51 @@ div.subtitle{
     font-size:0.9em;
 }
 
-div.description{
-    margin: 4px;
+table.lineup{
+    border-collapse: collapse; 
+    margin: 0.5em;
+    max-width: calc(50% - 1em);
+}
+
+table.lineup tr:first-child {
+    font-weight: bold;
+}
+table.lineup tr:nth-child(even){background-color: #fafafa;}
+
+table.lineup tr.events {
+    font-style:italic;
+}
+
+table.lineup td {
+    border:1px solid #fff; 
+    vertical-align: middle;
+    line-height: 12pt;
+    font-size: 10pt;
+    padding: 1px;
+    width:30px;
+}
+
+table.lineup td:first-child {
+    width: 196px;
+    padding: 1px 4px;
+    text-align: left;
+}
+
+table.lineup td.right{
+    text-align: right;
+}
+
+table.lineup td.secret{
+    color:transparent;
 }
 
 span.count {
     font-weight:normal;
+}
+
+@media print {
+    table.lineup {
+        page-break-inside: avoid;
+    }
+    table.lineup tr:nth-child(even){background-color: #fff;}
 }

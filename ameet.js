@@ -3,9 +3,6 @@ function AgeGroup(name, ages, eventNumbers){
     this.ages = ages;
     this.eventNumbers = eventNumbers;
 }
-
-const AGEDATE = "06012022";
-
 const _8U = new AgeGroup("8 & Under", [4, 5, 6, 7, 8], [1, 7, 17, 29, 39]);
 const _9_10 = new AgeGroup("9-10", [9, 10], [1, 9, 19, 31, 41]);
 const _11_12 = new AgeGroup("11-12", [11, 12], [1, 11, 21, 33, 43]);
@@ -13,8 +10,9 @@ const _13_14 = new AgeGroup("13-14", [13, 14], [3, 13, 23, 35, 45]);
 const _15_18 = new AgeGroup("15-18", [15, 16, 17, 18], [5, 15, 25, 37, 47]);
 const _12U = new AgeGroup("12&U", [4, 5, 6, 7, 8, 9, 10, 11, 12]);
 const _OPEN = new AgeGroup("Open", [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18]);
-
 const AGE_GROUPS = [_8U, _9_10, _11_12, _13_14, _15_18]; //, _12U, _OPEN];
+
+const AGEDATE = "06012022";
 
 const STROKES = ["IM", "FR", "BK", "BR", "FL"];
 

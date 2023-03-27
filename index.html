@@ -3,35 +3,32 @@
 <head id="head">
     <meta charset="UTF-8">
     <title id="pageTitle">MCSL Lineup Creator</title>
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="main.css">    
+    <link rel="stylesheet" href="lineups.css">
+    <link rel="stylesheet" href="tools.css">
+    <link rel="stylesheet" href="pickers.css">
+
     <script src="jquery3.min.js"></script>
     <script src="misc.js"></script>
     <script src="ameet.js"></script>
-    
-    <link rel="stylesheet" href="pickers.css">
-    <script src="pickers.js"></script>
-
-    <link rel="stylesheet" href="lineups.css">
-    <link rel="stylesheet" href="tools.css">
-    <link rel="stylesheet" href="buttons.css">
-    <link rel="stylesheet" href="print.css">
+    <script src="lineups.js"></script>
     <script src="loadRoster.js"></script>
     <script src="loadEntries.js"></script>
     <script src="tools.js"></script>
-    <script src="tables.js"></script>
-    <script src="lineups.js"></script>
+    <script src="pickers.js"></script>
+
 </head>
 
 <body id="body">
-    <div class="column noprint">
-        <div id="tools">
+    <div class="noprint">
+        <div id="tools" class="flex">
         </div>
         <div class="about">
             <div id="about-btn">About</div>
             <div id = "copyright">© 2023 Patrick Detzner</div>
         </div>    
     </div>
-    <div class="left column">
+    <div class="scrollLeft">
         <div id="displayArea" class="flex">
                 <div id="meetTitle"> 
                     Welcome to Emoji Line Ups for MCSL!

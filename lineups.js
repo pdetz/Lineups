@@ -1,5 +1,8 @@
 $(document).ready(function(){
-    loadTables();
+    $("#lineups").append(...AGE_GROUPS.map(
+      ag => [ lineupTable(ag, "M"), lineupTable(ag, "F") ]
+    ));
+
     $("#tools").append(
 
             uploadFile(UPLOAD + " Upload your .hy3 roster file", loadRoster, "#roster"),
