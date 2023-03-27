@@ -1,5 +1,6 @@
 #meetTitle {
     font-weight:bold;
+    font-size: 1.2em;
     padding: 1em 0;
     width:100%;
 }
@@ -10,7 +11,9 @@ input.dynamic{
     outline:none;
     text-align: center;
     border-radius: 0.3em;
+    border: 0;
     padding: 6px;
+    font-size: 1em;
     font-weight: bold;
 }
 

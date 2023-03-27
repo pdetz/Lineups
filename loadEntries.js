@@ -10,12 +10,15 @@ function loadEntries(uploadedFile){
         let entries = athlete.split('\n');
         let tr = findSwimmer( new Swimmer(entries.shift())).tr;
 
+        //console.log(findSwimmer( new Swimmer(entries.shift())));
+
         if (tr) {
             entries.forEach(hy3Entry =>{
                 let e = parseInt(hy3Entry.slice(39, 42).trim());
                 td = tr.find("td." + STROKES[EVENTS[e-1].stroke]);
                 let swimOrUp = e == tdEvent(td) ? "swim" : "up";
                 td.addClass(swimOrUp).html($("button.sel."+swimOrUp).html());
+                console.log(td);
             });
         }
     });

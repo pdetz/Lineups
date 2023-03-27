@@ -34,10 +34,11 @@ function fillLineups(roster){
         roster[gender].forEach((group, i) => {
             $("#" + gender + i)
                 .append(group.map(swimmer => 
-                    make("tr#s" + swimmer.id + ".swimmer").addTD(swimmer.display, "name")
+                    swimmer.tr = make("tr#s" + swimmer.id + ".swimmer").addTD(swimmer.display, "name")
                     .append(STROKES.map((stroke, i) => {
                         let e = AGE_GROUPS[swimmer.ag].eventNumbers[i];
                         return make("td." + stroke + ".event" + egn(e, swimmer.gender));
+                    return swimmer.tr;
                 }))))
                 .find("span.count").html(" (" + group.length + ")");
         });
@@ -71,12 +72,11 @@ function age(dob, date){
 }
 
 function uc(name){
-    console.log(name);
     return name.charAt(0).toUpperCase() + name.slice(1);
 }
 
 function swimmerMatch(s1, s2){
-    return s1.display == s2.display || s1.id == s2.id;
+    return s1.display == s2.display;
 }
 
 function compareNames(a, b){

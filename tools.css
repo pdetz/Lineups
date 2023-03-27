@@ -24,10 +24,6 @@ div.upload {
     margin-top: -2px;
 }
 
-div.upload:nth-child(2){
-    margin-top: 1em;
-}
-
 button.tools svg{
     fill: #fff;
 }
