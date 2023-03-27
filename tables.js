@@ -4,16 +4,17 @@ function loadTables(){
 
 function lineupTable(ageGroup, gender){
     let [table, tbody, th] = make("table.lineup#" + gender + AGE_GROUPS.indexOf(ageGroup));
-    th.addTH(ageGroup.name + " " + GENDERS[gender] + "<span class = 'count'> (3)</span>")
-        .append(STROKES.map(stroke => make("th").html(stroke)));
+    th.addTD(ageGroup.name + " " + GENDERS[gender] + "<span class = 'count'> (3)</span>").css("font-weight", "bold")
+        .append(STROKES.map(stroke => make("td").html(stroke)));
 
     tbody.addTR("events").addTD("Event #s — Please learn")
         .append(ageGroup.eventNumbers.map(n => make("td").html(egn(n, gender))));
-    tbody.addTR("swimmer").addTD("Regular age group swims are").addTD("", "swim").addTD("").addTD("").addTD("").addTD("")
-    tbody.addTR("swimmer").addTD("marked with these emojis").addTD("").addTD("", "swim").addTD("").addTD("").addTD("")
-    tbody.addTR("swimmer").addTD("Swim ups are marked", "indent").addTD("").addTD("").addTD("", "up").addTD("").addTD("");
-    tbody.addTR("swimmer").addTD("with these emojis", "indent").addTD("").addTD("").addTD("").addTD("", "up").addTD("");
-    tbody.addTR("swimmer").addTD("Good luck at the meet!").addTD("", "swim").addTD("", "up").addTD("", "swim").addTD("", "up").addTD("", "swim");
+    tbody.addTR("swimmer").addTD("Regular age group swims are =>", "right").addTD("").addTD("", "swim").addTD("").addTD("", "swim").addTD("");
+    tbody.addTR("swimmer").addTD("marked with these emojis =>", "right").addTD("", "swim").addTD("").addTD("", "swim").addTD("").addTD("", "swim");
+    tbody.addTR("swimmer").addTD("<div>Good luck at the meet!</div>", "secret").addTD("").addTD("").addTD("").addTD("").addTD("");
+    tbody.addTR("swimmer").addTD("Swim ups are marked =>", "right").addTD("").addTD("", "up").addTD("").addTD("", "up").addTD("");
+    tbody.addTR("swimmer").addTD("with these emojis =>", "right").addTD("", "up").addTD("").addTD("", "up").addTD("").addTD("", "up");
+    //tbody.addTR("swimmer").addTD("Good luck at the meet!").addTD("", "swim").addTD("", "up").addTD("", "swim").addTD("", "up").addTD("", "swim");
     
     return table;
 }

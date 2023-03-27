@@ -25,26 +25,30 @@
         width: 100%;
     }
 
-    #flex {
+    .flex {
+        display: flex;
         justify-content: space-between;
-        line-height: 12pt;
-        font-size: 12px;
     }
 
     table.lineup {
         page-break-inside: avoid;
+        max-width:49%;
     }
 
-    table.lineup td, th {
-        line-height: 12pt;
-        font-size: 12px;
-        width: 32px;
+    table.lineup tr:nth-child(even){
+        background-color: #fff;
     }
+
     
-    table.lineup td:nth-child(1), th:nth-child(1){
-        width: 185px;
+    table.lineup td:nth-child(1){
         padding: 0 4px;
         text-align: left;
+    }
+    
+    table.lineup td {
+        line-height: 12pt;
+        font-size: 12px;
+        width:32px
     }
 
     :root {

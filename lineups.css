@@ -13,10 +13,11 @@
 }
 
 table.lineup{
-    width: 380px;
+    max-width: 49%;
+    min-width: 330px;
 }
 
-table.lineup td, th {
+table.lineup td {
     padding: 0;
     margin:0; 
     border:1px solid white; 
@@ -25,17 +26,24 @@ table.lineup td, th {
     background:none;
     line-height: 13pt;
     font-size: 13px;
-    min-width: 32px;
+    width:32px
 }
 
-table.lineup td:nth-child(1), th:nth-child(1){
+table.lineup tr:nth-child(even){
+    background-color: #fafafa;
+}
+
+table.lineup td:nth-child(1) {
     width: 192px;
     padding: 0 4px;
     text-align: left;
 }
 
-table.lineup td.indent{
-    padding-left: 20px;
+table.lineup td.right{
+    text-align: right;
+}
+table.lineup td.secret{
+    color:transparent;
 }
 
 td>svg {

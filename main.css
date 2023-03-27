@@ -3,17 +3,18 @@ body{
     display:flex;
     flex-wrap: wrap;
     justify-content: center;
-    overflow-y:hidden;
+    overflow-y:auto;
+    direction:rtl;
 } 
 
 .left {
     direction:rtl;
+    height: 100vh;
+    overflow-y: scroll;
 }
 
 .column {
     /* border: 1px solid red; */
-    height: 100vh;
-    overflow-y: scroll;
 }
 
 #displayArea {

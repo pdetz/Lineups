@@ -11,26 +11,6 @@ button svg {
     height: 1em;
     vertical-align: top;
 }
-button.palette {
-    border:2px solid #000;
-    height: 2rem;
-    width: 2rem;
-    border-radius: .3rem;
-    margin: 2px;
-    padding: 0;
-    font-size: 1em;
-    color: #000;
-}
-button.palette.sel{
-    border: 2px solid #fff;
-}
-
-button.palette.sel.swim{
-    background-color: #6af;
-}
-button.palette.sel.up{
-    background-color: #7c0;
-}
 
 button.tools {
     background-color: #00f;
@@ -60,33 +40,4 @@ button.tools:hover {
 button.tools:active{
     border: 2px solid #000;
     filter: brightness(50%);
-}
-
-
-button.palette:hover{
-    border:1px solid #fff;
-    filter: brightness(80%)
-}
-button.palette:active{
-    border:1px solid #fff;
-    filter: brightness(50%)
-}
-
-button.tools.completed {
-    background-color: #0a0;
-}
-
-div.toggle{
-    display: flex;
-    justify-content: space-evenly;
-    flex-flow: row;
-    align-content: stretch;
-    margin-bottom:0.2em ;
-    cursor: pointer;
-}
-div.t{
-    color: #6af;
-}
-div.t.off{
-    color: #888;
 }
