@@ -1,11 +1,3 @@
-#tools {
-    display:flex;
-    flex-direction: column;
-    padding: 1em 1em 0.2em 1em;
-    border: none;
-    max-width: 500px;
-}
-
 div.tool {
     display: flex;
     flex-direction: column;

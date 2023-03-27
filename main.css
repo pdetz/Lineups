@@ -5,22 +5,27 @@ body{
     justify-content: center;
     overflow-y:auto;
     direction:rtl;
+    margin:0;
 } 
 
 .left {
     direction:rtl;
     overflow-y: scroll;
+    height: 100vh
 }
 
-.column {
-    /* border: 1px solid red; */
+#tools {
+    display:flex;
+    flex-direction: column;
+    padding: 1em 1em 0.2em 1em;
+    border: none;
+    max-width: 500px;
 }
 
 #displayArea {
     display:flex;
     max-width:800px;
     direction: ltr;
-    margin: 1em;
     text-align: center;
     padding: 1em;
     background: #fafafa;
