@@ -15,6 +15,7 @@ body{
 }
 
 #tools {
+    direction:ltr;
     display:flex;
     flex-direction: column;
     padding: 1em 1em 0.2em 1em;

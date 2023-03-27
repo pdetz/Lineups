@@ -10,16 +10,6 @@ $(document).ready(function(){
             iconPicker(random(), random()),
             printButton()
     );
-    cells = $("td.swim");
-    setInterval(() => {
-      cells.each((index, cell) => {
-        console.log(cell);
-        const shouldHide = Math.random() < 0.5;
-        $(index).toggleClass("swim");
-        $("button.palette.swim.sel").click();
-      });
-    }, Math.floor(Math.random() * 400) + 100);
-
 
     $('#about-btn').on('click', function() {
         $('#modal-container').fadeIn(300);
