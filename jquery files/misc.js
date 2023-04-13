@@ -9,7 +9,7 @@ const HEADERS = ['#f66', '#fa0', '#ff0', '#5d0', '#6db', '#6af', '#c6d', '#888']
 const ROWS =    ['#fdd', '#fea', '#ffa', '#dfb', '#dfe', '#def', '#edf', '#ddd'];
 
 const aquatic = ['🐬', '🦈', '🐟', '🐳',  '🐠', '🐡', '🐙', '🦑'];
-const reptiles = ['🐊', '🐢', '🐸', '🐍', '🐉', ];
+const reptiles = ['🐊', '🐢', '🐸', '🐍', '🐉'];
 const bugs = ['🐞', '🐝', '🦋'];
 const birds = ['🦆', '🦉', '🦅', '🐧'];
 const animals = ['🦊', '🐻', '🐯', '🦘'];

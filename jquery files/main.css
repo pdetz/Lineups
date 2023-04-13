@@ -1,10 +1,11 @@
-body {margin:0; padding: 0}
-#app{
+body{
     font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", "DejaVu Sans", sans-serif;
     text-rendering: optimizeLegibility;
     display:flex;
+    flex-wrap: wrap;
     justify-content: center;
     overflow-y:auto;
+    direction:rtl;
     margin:0;
     background-color:#000;
     color:#fff;
@@ -41,7 +42,7 @@ body {margin:0; padding: 0}
     flex-direction: column;
     justify-content: space-between;
     padding: 1em 1em 0 1em;
-    min-height: 32em;
+    min-height: 480px;
 }
 
 @media only screen and (max-width: 767px) {
@@ -52,7 +53,7 @@ body {margin:0; padding: 0}
 
 @media print {
     .noprint, .scrollLeft::-webkit-scrollbar {display:none}
-    #app, body {background:none}
+    body {background:none}
     .scrollLeft {height:auto}
     #displayArea {
         margin: 0;
@@ -79,9 +80,8 @@ body {margin:0; padding: 0}
     height: 100%;
     background-color: rgba(0,0,0,0.4); /* Add a black background with opacity */
   }
-  
 #about{
-    background-color: #f00;
+    background-color: #000;
     margin: 15% auto;
     padding: 1em;
     border: 1px solid #888;

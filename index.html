@@ -3,42 +3,26 @@
 <head id="head">
     <meta charset="UTF-8">
     <title id="pageTitle">MCSL Lineup Creator</title>
-    <link rel="stylesheet" href="main.css">    
-    <link rel="stylesheet" href="lineups.css">
-    <link rel="stylesheet" href="tools.css">
-    <link rel="stylesheet" href="pickers.css">
+    <script src="./react/react.development.js"></script>
+    <script src="./react/react-dom.development.js"></script>
+    
+    <link rel="stylesheet" href="main.css">
 
-    <script src="jquery3.min.js"></script>
-    <script src="misc.js"></script>
-    <script src="ameet.js"></script>
-    <script src="lineups.js"></script>
-    <script src="loadRoster.js"></script>
-    <script src="loadEntries.js"></script>
-    <script src="tools.js"></script>
-    <script src="pickers.js"></script>
+    <script src="./data/emojis.js"></script>
+    <script src="./data/ameet.js"></script>
+    <script src="./data/swimmer.js"></script>
 
+    <link rel="stylesheet" href="./lineups/lineups.css">
+    <script src="./lineups/lineups.js"></script>
+
+    <link rel="stylesheet" href="./tools/tools.css">
+    <link rel="stylesheet" href="./tools/pickers.css">
+    <script src="./tools/tools.js"></script>
+    <script src="./tools/pickers.js"></script>
 </head>
 
 <body id="body">
-    <div class="noprint">
-        <div id="tools" class="flex">
-        </div>
-        <div class="about">
-            <div id="about-btn">About</div>
-            <div id = "copyright">© 2023 Patrick Detzner</div>
-        </div>    
-    </div>
-    <div class="scrollLeft">
-        <div id="displayArea" class="flex">
-                <div id="meetTitle"> 
-                    Welcome to Emoji Line Ups for MCSL!
-                    <div class="subtitle">Load your roster first, then meet entries. When you are done, you can click on this title to change it.</div>
-                    <div class="subtitle">Click on the square buttons to customize the appearance of your team's line ups. </div>
-                </div>
-                <div id="lineups" class="flex"></div>
-        </div>
-        </div>
-    </div>
+    <div id="app"></div>
     <div id="modal-container">
       <div id="about">
         <p>Welcome to my line ups project! I hope you enjoy using it. I am a long time coach in MCSL working on other exciting swim team projects for us.</p>
@@ -47,5 +31,6 @@
         <p>P.S. If I'm missing an emoji that your team needs, email me at <a href="mailto:patrick.detzner@gmail.com">patrick.detzner@gmail.com</a>. Good luck this season!</p>
       </div>
     </div>
+    <script src="app.js"></script>    
 </body>
 </html>

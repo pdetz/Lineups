@@ -1,0 +1,147 @@
+#welcome {
+    font-weight:bold;
+    font-size: 1rem;
+    padding: 1rem 0;
+    width:100%;
+}
+
+#welcome.hide{
+    display:none;
+}
+
+div.instructions{
+    margin: 0.5rem;
+    padding: 1rem;
+    border: 1px solid black;
+    border-radius: 0.3rem;
+    text-align: left;
+    font-weight: normal;
+    font-size:0.875rem;
+    line-height: 1.1rem;
+}
+
+input.title{
+    width:80%;
+    background:none;
+    outline:none;
+    text-align: center;
+    border-radius: 0.3em;
+    border:1px solid #888;
+    padding: 0.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+p.indent {
+    padding: 0 2em;
+}
+
+input.title:hover{
+    background-color: #def;
+}
+
+input.title:focus{
+    background-color: #def;
+    border-color: #6af;
+}
+
+ol.options{
+    display: block;
+    list-style-type: decimal;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 1em;
+    margin-inline-end: 1em;
+    padding-inline-start: 2em;
+}
+
+li.options{
+    padding: 0.2em 1em;
+}
+
+table.lineup{
+    border-collapse: collapse; 
+    margin: 0.5em;
+    max-width: calc(50% - 1em);
+}
+
+table.lineup thead, tbody {
+    transition: background-color 0.5s ease-in-out;
+}
+
+table.lineup thead {
+    font-weight: bold;
+}
+table.lineup tr:nth-child(even){background-color: #fafafa;}
+
+table.lineup tr.events {
+    font-style:italic;
+    font-weight: normal;
+}
+
+table.lineup td {
+    border: 0.0625rem solid #fff; 
+    vertical-align: middle;
+    line-height: 1rem;
+    font-size: 0.83333rem;
+    padding: 0.0625rem;
+    width:1.875rem;
+}
+
+table.lineup td.name {
+    width: 12.5rem;
+    padding-left: 0.25rem;
+    text-align: left;
+}
+
+table.lineup td.right{
+    text-align: right;
+}
+
+table.lineup td.secret{
+    color:transparent;
+}
+
+span.count {
+    font-weight:normal;
+}
+
+div.pair{
+    width:100%
+}
+
+@media print {
+    input.title{
+        width:80%;
+        background: none;
+        outline:none;
+        border: none;
+        text-align: center;
+        padding: 0;
+        font-size: 12pt;
+        font-weight: bold;
+    }
+
+    table.lineup {
+        margin: 16px 0 0 0;
+        max-width: calc(50% - 16px);
+    }
+
+    div.pair {
+        page-break-inside: avoid;
+    }
+            
+    table.lineup td {
+        line-height: 16px;
+        font-size: 10pt;
+        padding: 1px;
+        width: 30px;
+    }
+
+    table.lineup td.name {
+        padding-left: 4px;
+        text-align: left;
+    }
+
+    table.lineup tr:nth-child(even){background-color: #fff;}
+}
