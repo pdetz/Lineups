@@ -44,7 +44,7 @@ div.b{
     align-items: center;
     padding: 1em;
     border-radius: 0.3rem;
-    border: 1px solid #223;
+    border: 0.0625rem solid #223;
     margin: 0.5rem 0;
     width: 20rem;
 }

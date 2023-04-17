@@ -78,10 +78,7 @@ function demoRoster(groups){
 
         if (n == 0 || n == 2) entries = [0, 2, 4].map(i => new Entry(currentAG.eventNumbers[i], 60));
         if (n == 1) entries = [1, 3].map(i => new Entry(currentAG.eventNumbers[i], 60));
-        if (ag < 8){
-            if (n == 3 || n == 5) entries = [1, 3].map(i => new Entry(currentAG.eventNumbers[i] + 2, 60));
-            if (n == 4) entries = [0, 2, 4].map(i => new Entry(currentAG.eventNumbers[i] + 2, 60));
-        }
+        if (ag < 8 && n == 3) entries = [1, 3].map(i => new Entry(currentAG.eventNumbers[i] + 2, 60));
 
         roster.addSwimmer({
             gender: s.gender,

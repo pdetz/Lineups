@@ -14,6 +14,7 @@ body {margin:0; padding: 0}
     direction:rtl;
     overflow-y: scroll;
     height: 100vh;
+    border: 2px solid white;
 }
 .scrollLeft::-webkit-scrollbar {
     background:#000;
@@ -26,11 +27,11 @@ body {margin:0; padding: 0}
 
 #displayArea {
     display:flex;
-    max-width: 767px;
+    max-width: 48rem;
     direction: ltr;
     text-align: center;
-    margin: 1em;
-    padding: 1em;
+    margin: 1rem;
+    padding: 1rem 1.25rem;
     background: #fafafa;
     color: #000;
 }
@@ -42,19 +43,20 @@ body {margin:0; padding: 0}
     justify-content: space-between;
     padding: 1em 1em 0 1em;
     min-height: 32em;
+    max-width: 22.125rem;
 }
 
-@media only screen and (max-width: 767px) {
-    #tools {
-      flex: 0 0 100%;
-    }
-  }
-
 @media print {
+  @media print and (color) {
+    * {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
     .noprint, .scrollLeft::-webkit-scrollbar {display:none}
     #app, body {background:none}
     .scrollLeft {height:auto}
     #displayArea {
+      width: 100%;
         margin: 0;
         padding: 0;
         background: none;
@@ -67,6 +69,21 @@ body {margin:0; padding: 0}
     align-items: flex-start;
     justify-content: space-around;
 }
+
+@media (max-width: 79rem) {
+
+  #sidebar {
+    width: 100%;
+    display: flex;
+    flex-flow: column wrap;
+    align-content: center;
+  }
+    /* Change flex-direction to column to stack elements vertically */
+    #app {
+      flex-flow: column-reverse wrap;
+    align-content: center;
+    }
+  }
 
   /* Styling for the modal container */
 #modal-container {
