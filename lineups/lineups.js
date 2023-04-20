@@ -1,7 +1,7 @@
 function LineUps({meet, roster, selectedColors, selectedEmojis}){
     return e(Div, {css:"#lineups"},
         [0, 2, 4, 6, 8].map(y => {
-            return e(Div, {css:"pair"}, [0, 1].map(x => {
+            return e(Div, {key: y, css:"pair"}, [0, 1].map(x => {
                 return e(LineUpTable, {key: x+y, meet, group: roster.groups[x+y], selectedColors, selectedEmojis})
             }))
         })

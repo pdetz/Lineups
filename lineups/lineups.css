@@ -3,6 +3,9 @@
     font-size: 1rem;
     padding: 1rem 0;
     width:100%;
+    max-width: 48rem;
+    direction: ltr;
+    border: 1px solid #888;
 }
 
 #welcome.hide{
@@ -21,7 +24,7 @@ div.instructions{
 }
 
 input.title{
-    width:100%;
+    width:calc(100% - 1.25rem);
     background:none;
     outline:none;
     text-align: center;

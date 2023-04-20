@@ -38,25 +38,37 @@ function App(){
     }
 
     return [
-        e(Div, {key: "documentView", css:"#documentView scrollLeft"},
-            e(Div, {key: "displayArea", css:"#displayArea flex"}, 
-                e(Welcome, {selectedEmojis, handleRosterLoad, instructions} ),
-                e("input", {className: "title", value: title, onChange: handleTitleChange }),
-                e(LineUps, {key: "lineups", meet, roster, selectedColors, selectedEmojis})
-            )
+        e(Div, {key: "topbar", css: "topbar noprint mobile"},
+            e(ToolButton, {key: "style", id: "styleButton", selectedColors}, "Style"),
+            e(ToolButton, {key: "lineups", id: "lineupsButton", selectedColors}, "Line Ups"),
+            //e(FileInputButton, {text:"📄 Files", onLoad: handleRosterLoad}),
+            //e(ToolButton, {id: "print",  onClick: window.print}, "🖨️ Print")
         ),
-        e(Div, {key: "sidebar", css:"#sidebar noprint"},
-            e(Div, {key: "tools", css:"#tools flex"},
-                e(FileInputButton, {text:"📄 Upload Meet Files", onLoad: handleRosterLoad}),
-                e(ColorPicker, {colorRows: [HEADERS, ROWS], selectedColors, onColorClick: handlePickerClick, setSelectedColors}),
-                e(EmojiPicker, {emojis: EMOJIS, selectedEmojis, selectedColors, onEmojiClick: handlePickerClick, setSelectedEmojis}),
-                e(ToolButton, {id: "print", onClick: window.print}, "🖨️ Print")
+        e(Div, {key: "view", id: "view" },
+            e(Div, {key: "documentView", css:"#documentView scrollLeft"},
+                //e(Welcome, {selectedEmojis, handleRosterLoad, instructions} ),
+                e(Div, {key: "displayArea", css:"#displayArea"}, 
+                    e("input", {className: "title", value: title, onChange: handleTitleChange }),
+                    e(LineUps, {key: "lineups", meet, roster, selectedColors, selectedEmojis})
+                )
             ),
-            e(Div, {key: "info", css:"#info", dangerouslySetInnerHTML:{__html: 
-                "<div id='about-btn'> About </div>" +
-                "<div id='copyright'> © 2023 Patrick Detzner </div>"
-            }})
-    ),
+            e(Div, {key: "sidebar", css:"#sidebar noprint"},
+                e(Div, {key: "tools", css:"#tools"},
+                    e(ColorPicker, {colorRows: [HEADERS, ROWS], selectedColors, onColorClick: handlePickerClick, setSelectedColors}),
+                    e(EmojiPicker, {emojis: EMOJIS, selectedEmojis, selectedColors, onEmojiClick: handlePickerClick, setSelectedEmojis}),
+                    e(Div, {key: "fileprint", css: "topbar desktop"},
+                        e(FileInputButton, {text:"📄 Files", onLoad: handleRosterLoad, selectedColors}),
+                        e(ToolButton, {id: "print", onClick: window.print, selectedColors}, "🖨️ Print")
+                    ),
+                    e(Info, {css:"info desktop"})
+                )
+            ),
+        ),
+        e(Div, {key: "bottombar", css: "topbar noprint mobile"},
+            e(FileInputButton, {text:"📄 Files", onLoad: handleRosterLoad, selectedColors}),
+            e(ToolButton, {id: "print",  onClick: window.print, selectedColors}, "🖨️ Print")
+        ),
+        e(Info, {css:"info mobile"})
     ]
 }
 
@@ -86,6 +98,13 @@ return e(Div, {css: "#welcome" + instructions}, "Welcome to Emoji Line Ups for M
         ),
     )
 );
+}
+
+function Info({css}) {
+    return e(Div, {key: "info", css:css, dangerouslySetInnerHTML:{__html: 
+        "<div id='about-btn'> About </div>" +
+        "<div id='copyright'> © 2023 Patrick Detzner </div>"
+    }})
 }
 
 function Div({css='', ...props}) {

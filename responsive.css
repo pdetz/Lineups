@@ -1,0 +1,47 @@
+/*Mobile view*/
+  @media screen and (max-width: 79rem) {
+    .desktop {display:none}
+
+    #view{
+        display:flex;
+        flex-flow: column nowrap;
+        width: calc(100% - 2rem);
+        overflow-x:scroll;
+        overflow-y:auto;
+        height: calc(100vh - 8rem)
+    }
+
+    .info {
+        padding: 0.25rem;
+    }
+  }
+
+  /*Desktop view*/
+@media screen and (min-width: 79rem) {
+    
+    .mobile {display:none}
+
+    #view{
+        display:flex;
+        flex-flow: row nowrap;
+        justify-content: center;
+        width: auto;
+        overflow-x:hidden;
+        overflow-y:hidden;
+        height: 100vh
+    }
+
+    #sidebar {
+        height: 100vh;
+        align-content: center;
+    }
+
+    .topbar {
+        padding: 0;
+    }
+
+    .info {
+        padding-top: 1rem;
+    }
+
+  }

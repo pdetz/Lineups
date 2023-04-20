@@ -1,14 +1,9 @@
 button {
     cursor: pointer;
-    font-size: 1.2em;
+    font-size: 1rem;
     font-weight: normal;
-    padding: 0.2em 0;
+    padding: 0.25rem 0;
     border-radius: 0.3em;
-}
-button svg {
-    display: inline;
-    height: 1em;
-    vertical-align: top;
 }
 
 button.tools {
@@ -16,12 +11,7 @@ button.tools {
     border: 0.125rem solid #6af;
     margin:0;
     color: #6af;
-    width: 100%; 
-}
-
-span.upload {
-    width:100%;
-    margin: -0.125rem 0 0.5rem 0;
+    width:48%;
 }
 
 span.upload.inst {
@@ -41,7 +31,7 @@ button.tools svg{
 }
 
 button.tools:hover {
-    border: 2px solid #888;
+    border: 0.125rem solid #888;
     color: #ddd;
 }
 
@@ -52,27 +42,7 @@ button.tools:active{
 
 input.upload {display:none;}
 
-#print {
-    margin-top: 0.5rem;
-}
 
-#info {
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content: space-between;
-    padding: 0.2em 1em 1em 1em;
-}
-#info > div{
-    color: #334;
-    font-size: 0.875rem;
-    margin:0.2em;
-    border:none;
-    padding:0;
-}
-#about-btn:hover{
-    cursor: pointer;
-    color:#6af;
-}
   .blur{
     filter:blur(5px)
   }
