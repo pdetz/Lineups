@@ -37,6 +37,26 @@ function App(){
         }
     }
 
+    const [scaleFactor, setScaleFactor] = React.useState(1);
+    React.useEffect(() => {
+        function handleResize() {
+            const width = window.innerWidth;
+            const fontSize = parseFloat(
+                getComputedStyle(document.documentElement).fontSize
+              );
+            const newScaleFactor = width / fontSize < 53 ?
+                (width - 5 * fontSize) / (48 * fontSize) : 1;
+            setScaleFactor(newScaleFactor);
+          }
+    
+        window.addEventListener("resize", handleResize);
+        handleResize(); // Call the function once to set the initial scale factor
+    
+        return () => {
+          window.removeEventListener("resize", handleResize);
+        };
+      }, []);
+
     return [
         e(Div, {key: "topbar", css: "topbar noprint mobile"},
             e(ToolButton, {key: "style", id: "styleButton", selectedColors}, "Style"),
@@ -47,7 +67,7 @@ function App(){
         e(Div, {key: "view", id: "view" },
             e(Div, {key: "documentView", css:"#documentView scrollLeft"},
                 //e(Welcome, {selectedEmojis, handleRosterLoad, instructions} ),
-                e(Div, {key: "displayArea", css:"#displayArea"}, 
+                e(Div, {key: "displayArea", css:"#displayArea", style:{ transform: `scale(${scaleFactor})`, transformOrigin:"top left"}}, 
                     e("input", {className: "title", value: title, onChange: handleTitleChange }),
                     e(LineUps, {key: "lineups", meet, roster, selectedColors, selectedEmojis})
                 )
@@ -60,7 +80,7 @@ function App(){
                         e(FileInputButton, {text:"📄 Files", onLoad: handleRosterLoad, selectedColors}),
                         e(ToolButton, {id: "print", onClick: window.print, selectedColors}, "🖨️ Print")
                     ),
-                    e(Info, {css:"info desktop"})
+                    e(Info, {key:"info", css:"info desktop"})
                 )
             ),
         ),
@@ -68,7 +88,7 @@ function App(){
             e(FileInputButton, {text:"📄 Files", onLoad: handleRosterLoad, selectedColors}),
             e(ToolButton, {id: "print",  onClick: window.print, selectedColors}, "🖨️ Print")
         ),
-        e(Info, {css:"info mobile"})
+        e(Info, {key:"info", css:"noprint info mobile"})
     ]
 }
 

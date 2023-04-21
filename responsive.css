@@ -5,15 +5,27 @@
     #view{
         display:flex;
         flex-flow: column nowrap;
-        width: calc(100% - 2rem);
-        overflow-x:scroll;
+        overflow-x: hidden;
         overflow-y:auto;
         height: calc(100vh - 8rem)
+    }
+
+    .scrollLeft {
+        direction:ltr;
+        overflow-y: auto;
+        overflow-x: hidden;
+        width: 100%;
+        border: 1px solid green;
     }
 
     .info {
         padding: 0.25rem;
     }
+
+    #displayArea {
+        font-size: calc(48rem / 100);
+    }
+
   }
 
   /*Desktop view*/
@@ -44,4 +56,22 @@
         padding-top: 1rem;
     }
 
+  }
+
+
+  @media print {
+  
+    * {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+    .noprint, .scrollLeft::-webkit-scrollbar, #sidebar {display:none}
+    #app, body {background:none}
+    .scrollLeft {height:auto}
+    #displayArea {
+      width: 100%;
+        margin: 0;
+        padding: 0;
+        background: none;
+    }
   }
