@@ -24,7 +24,7 @@ div.instructions{
 }
 
 input.title{
-    width:calc(100% - 1.25rem);
+    width: 100%;
     background:none;
     outline:none;
     text-align: center;

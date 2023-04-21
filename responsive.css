@@ -1,41 +1,63 @@
 /*Mobile view*/
-  @media screen and (max-width: 79rem) {
+@media screen and (max-width: 50rem) {
     .desktop {display:none}
 
     #view{
         display:flex;
-        flex-flow: column nowrap;
-        overflow-x: hidden;
+        flex-flow: column;
+        justify-content: center;
+        overflow-x: auto;
         overflow-y:auto;
-        height: calc(100vh - 8rem)
+        height: 100vh;
     }
 
     .scrollLeft {
-        direction:ltr;
         overflow-y: auto;
         overflow-x: hidden;
         width: 100%;
-        border: 1px solid green;
     }
 
-    .info {
-        padding: 0.25rem;
+    #sidebar {
+        width: 100%
     }
 
-    #displayArea {
-        font-size: calc(48rem / 100);
+}
+
+/* Tablet view */
+@media screen and (min-width: 50rem) and (max-width: 73rem) {
+    #view{
+        display:flex;
+        flex-flow: row;
+        justify-content: center;
+        align-content: left;
+        width: auto;
+        overflow-x:hidden;
+        overflow-y:hidden;
+        height: 100vh
+
     }
 
-  }
+    .scrollLeft {
+        overflow-y: auto;
+        overflow-x: hidden;
+        width: 100%;
+        border: 1px solid red;
+    }
+
+    #sidebar {
+        height: 100vh;
+        align-content: center;
+    }
+}
 
   /*Desktop view*/
-@media screen and (min-width: 79rem) {
+@media screen and (min-width: 73rem) {
     
     .mobile {display:none}
 
     #view{
         display:flex;
-        flex-flow: row nowrap;
+        flex-flow: row;
         justify-content: center;
         width: auto;
         overflow-x:hidden;
@@ -46,14 +68,6 @@
     #sidebar {
         height: 100vh;
         align-content: center;
-    }
-
-    .topbar {
-        padding: 0;
-    }
-
-    .info {
-        padding-top: 1rem;
     }
 
   }

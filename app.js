@@ -41,13 +41,13 @@ function App(){
     React.useEffect(() => {
         function handleResize() {
             const width = window.innerWidth;
-            const fontSize = parseFloat(
-                getComputedStyle(document.documentElement).fontSize
-              );
-            const newScaleFactor = width / fontSize < 53 ?
-                (width - 5 * fontSize) / (48 * fontSize) : 1;
+            const fontSize = parseFloat(getComputedStyle(document.documentElement).fontSize);
+            const newScaleFactor = width / fontSize < 50 ?
+                (width - 2 * fontSize) / (48 * fontSize) : 
+                width / fontSize < 73 ?
+                (width - 25 * fontSize) / (48 * fontSize) : 1;
             setScaleFactor(newScaleFactor);
-          }
+        }
     
         window.addEventListener("resize", handleResize);
         handleResize(); // Call the function once to set the initial scale factor
@@ -57,17 +57,10 @@ function App(){
         };
       }, []);
 
-    return [
-        e(Div, {key: "topbar", css: "topbar noprint mobile"},
-            e(ToolButton, {key: "style", id: "styleButton", selectedColors}, "Style"),
-            e(ToolButton, {key: "lineups", id: "lineupsButton", selectedColors}, "Line Ups"),
-            //e(FileInputButton, {text:"📄 Files", onLoad: handleRosterLoad}),
-            //e(ToolButton, {id: "print",  onClick: window.print}, "🖨️ Print")
-        ),
-        e(Div, {key: "view", id: "view" },
+    return e(Div, {key: "view", id: "view" },
             e(Div, {key: "documentView", css:"#documentView scrollLeft"},
                 //e(Welcome, {selectedEmojis, handleRosterLoad, instructions} ),
-                e(Div, {key: "displayArea", css:"#displayArea", style:{ transform: `scale(${scaleFactor})`, transformOrigin:"top left"}}, 
+                e(Div, {key: "displayArea", css:"#displayArea", style:{ transform: `scale(${scaleFactor})`, transformOrigin:"top right"}}, 
                     e("input", {className: "title", value: title, onChange: handleTitleChange }),
                     e(LineUps, {key: "lineups", meet, roster, selectedColors, selectedEmojis})
                 )
@@ -76,20 +69,14 @@ function App(){
                 e(Div, {key: "tools", css:"#tools"},
                     e(ColorPicker, {colorRows: [HEADERS, ROWS], selectedColors, onColorClick: handlePickerClick, setSelectedColors}),
                     e(EmojiPicker, {emojis: EMOJIS, selectedEmojis, selectedColors, onEmojiClick: handlePickerClick, setSelectedEmojis}),
-                    e(Div, {key: "fileprint", css: "topbar desktop"},
+                    e(Div, {key: "fileprint", css: "buttonbar"},
                         e(FileInputButton, {text:"📄 Files", onLoad: handleRosterLoad, selectedColors}),
                         e(ToolButton, {id: "print", onClick: window.print, selectedColors}, "🖨️ Print")
                     ),
-                    e(Info, {key:"info", css:"info desktop"})
+                    e(Info, {key:"info", css:"info"})
                 )
             ),
-        ),
-        e(Div, {key: "bottombar", css: "topbar noprint mobile"},
-            e(FileInputButton, {text:"📄 Files", onLoad: handleRosterLoad, selectedColors}),
-            e(ToolButton, {id: "print",  onClick: window.print, selectedColors}, "🖨️ Print")
-        ),
-        e(Info, {key:"info", css:"noprint info mobile"})
-    ]
+        )
 }
 
 function Welcome({selectedEmojis, handleRosterLoad, instructions}) {
