@@ -14,6 +14,7 @@
     .scrollLeft {
         overflow-y: auto;
         overflow-x: hidden;
+        height:auto;
         width: 100%;
     }
 
@@ -25,6 +26,7 @@
 
 /* Tablet view */
 @media screen and (min-width: 50rem) and (max-width: 73rem) {
+    
     #view{
         display:flex;
         flex-flow: row;
@@ -32,7 +34,7 @@
         align-content: left;
         width: auto;
         overflow-x:hidden;
-        overflow-y:hidden;
+        overflow-y:auto;
         height: 100vh
 
     }
@@ -41,7 +43,7 @@
         overflow-y: auto;
         overflow-x: hidden;
         width: 100%;
-        border: 1px solid red;
+        height:100vh;
     }
 
     #sidebar {
