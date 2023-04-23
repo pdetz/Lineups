@@ -62,10 +62,6 @@ li.options{
     padding: 0.2em 1em;
 }
 
-#lineups {
-    width: 100%;
-}
-
 div.pair{
     display: flex;
     justify-content: space-between;

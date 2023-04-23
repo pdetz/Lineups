@@ -9,6 +9,7 @@ function App(){
     const [selectedColors, setSelectedColors] = React.useState([HEADERS[random(0, 7)], ROWS[random(0, 7)]]);
     const [title, setTitle] = React.useState("Click here to edit the title");
     const [instructions, setInstructions] = React.useState('');
+    const [scaleFactor, setScaleFactor] = React.useState([1, "auto"]);
 
     function handleTitleChange(event){ setTitle(event.target.value) }
 
@@ -37,20 +38,15 @@ function App(){
         }
     }
 
-    const [scaleFactor, setScaleFactor] = React.useState([1, "auto"]);
     React.useEffect(() => {
         function handleResize() {
-            const displayArea = document.querySelector('#displayArea');
-            const documentView = document.querySelector('#documentView');
-            console.log(displayArea.clientHeight,documentView.clientHeight);
-            
             const width = window.innerWidth;
             const fontSize = parseFloat(getComputedStyle(document.documentElement).fontSize);
-            const newScaleFactor = width / fontSize < 50 ?
+            const newScaleFactor = width / fontSize <= 50 ?
                 (width - 2 * fontSize) / (48 * fontSize) : 
                     width / fontSize < 73 ?
                         (width - 25 * fontSize) / (48 * fontSize) : 1;
-            const newHeight = document.querySelector('#displayArea').clientHeight * newScaleFactor + "px";
+            const newHeight = document.querySelector('#displayArea').clientHeight * newScaleFactor + fontSize + "px";
             setScaleFactor([newScaleFactor, newHeight]);
         }
     
@@ -62,13 +58,12 @@ function App(){
         };
       }, []);
 
-    return e(Div, {key: "view", id: "view" },
+    return [e(LineUps, {css: "#lineups", key: "lineups", title, handleTitleChange, meet, roster, selectedColors, selectedEmojis}),
             e(Div, {key: "documentView", css:"#documentView scrollLeft"},
-                e(Div, {key: "resize", css:"resize", style:{height: scaleFactor[1]}},
-                e(Div, {key: "displayArea", css:"#displayArea", style:{transform: `scale(${scaleFactor[0]})`, transformOrigin:"top right"}}, 
-                    e("input", {className: "title", value: title, onChange: handleTitleChange }),
-                    e(LineUps, {key: "lineups", meet, roster, selectedColors, selectedEmojis})
-                )
+                e(Div, {key: "resize", css:"resize", style:{height: scaleFactor[1]}},                
+                    e(LineUps, {key: "displayArea", css:"#displayArea", title, handleTitleChange, meet, roster, selectedColors, selectedEmojis,
+                        style:{transform: `scale(${scaleFactor[0]})`, transformOrigin:"top right"}
+                    })
                 )
                 //e(Welcome, {selectedEmojis, handleRosterLoad, instructions} ),
             ),
@@ -83,7 +78,7 @@ function App(){
                     e(Info, {key:"info", css:"info"})
                 )
             ),
-        )
+        ]
 }
 
 function Welcome({selectedEmojis, handleRosterLoad, instructions}) {

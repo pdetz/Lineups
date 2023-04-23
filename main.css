@@ -8,17 +8,21 @@
   box-sizing: inherit;
 }
 
-body {margin:0; padding: 0}
+body {
+  margin:0;
+  padding: 0;
+  background-color:#000;
+  color:#fff;
+}
+
 #app{
     font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", "DejaVu Sans", sans-serif;
     text-rendering: optimizeLegibility;
     display:flex;
-    flex-flow: column;
+    flex-flow: row;
     justify-content: center;
     overflow-y:auto;
-    margin:0;
-    background-color:#000;
-    color:#fff;
+    height: 100vh;
 } 
 
 .buttonbar {
@@ -38,6 +42,7 @@ body {margin:0; padding: 0}
 .scrollLeft {
     direction:rtl;
     overflow-y: scroll;
+    overflow-x: hidden;
     height: 100vh;
 }
 .scrollLeft::-webkit-scrollbar {
@@ -61,6 +66,10 @@ body {margin:0; padding: 0}
     padding: 1rem 1.25rem;
     background: #fafafa;
     color: #000;
+}
+
+#lineups {
+  display: none;
 }
 
 #tools {
