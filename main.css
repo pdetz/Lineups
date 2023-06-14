@@ -21,7 +21,7 @@ body {
     display:flex;
     flex-flow: row;
     justify-content: center;
-    overflow-y:auto;
+    overflow-y:visible;
     height: 100vh;
 } 
 
