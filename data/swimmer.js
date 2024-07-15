@@ -1,8 +1,10 @@
 function Roster(groups){
+    console.log(groups);
     this.groups = groups.map(group => {
         return {...group, swimmers: []};
     });
     this.addSwimmer = (swimmer) => {
+        console.log(swimmer);
         let currentSwimmers = this.groups[swimmer.ag].swimmers;
         let foundSwimmer = currentSwimmers.find(s => swimmerMatch(s, swimmer));
         if (foundSwimmer){
@@ -23,7 +25,13 @@ function Swimmer(hy3Data){
 
     this.gender = athleteInfo.slice(0, 1);
     this.dob = athleteInfo.slice(86, 94).trim();
-    this.age = age(this.dob, AGEDATE);
+
+    if (this.dob === '') {
+        this.age = parseInt(athleteInfo.slice(95, 98).trim());
+    } else {
+        this.age = age(this.dob, AGEDATE);
+    }
+
     this.apellido = uc(athleteInfo.slice(6, 26).trim());
     this.nombre = uc(athleteInfo.slice(26, 46).trim());
     this.display = this.apellido + ", " + uc(athleteInfo.slice(26, 66).trim().split(/\s+/).slice(-1)[0]) + " " + this.age;
